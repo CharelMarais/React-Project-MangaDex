@@ -1,7 +1,18 @@
 function Loading() {
   return (
-    <div className="w-full h-full bg-slate-800">
-      <h2>manga library</h2>
+    <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-amber-600 flex-col">
+      <div className=" grid h-44 w-44 content-center justify-center ">
+        <img
+          className="col-start-1 row-start-1 animate-pulse"
+          src="src/assets/img/aura.png"
+          alt="aura"
+        />
+        <img
+          className=" relative top-16 right-1 col-start-1 row-start-1"
+          src="src/assets/img/goku.png"
+          alt="aura"
+        />
+      </div>
     </div>
   );
 }
