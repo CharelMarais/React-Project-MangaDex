@@ -3,7 +3,7 @@ import { MangaData } from "../models/manga";
 
 export function getManga(): Promise<MangaData[]> {
   const response = fetch(
-    `https://api.mangadex.org/manga?limit=20&includes[]=cover_art`
+    `https://api.mangadex.org/manga?order[rating]=desc&limit=20&includes[]=cover_art`
   )
     .then((res) => res.json())
     .then((res) => res.data);

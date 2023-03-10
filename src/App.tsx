@@ -1,14 +1,18 @@
 import Loading from "./components/loading-screen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MangaCardContainer } from "./components/MangaCardContainer";
+import { Header } from "./components/Header";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <MangaCardContainer />
-    </QueryClientProvider>
+    <>
+      <Header />
+      <QueryClientProvider client={queryClient}>
+        <MangaCardContainer />
+      </QueryClientProvider>
+    </>
     // <Loading></Loading>
   );
 }

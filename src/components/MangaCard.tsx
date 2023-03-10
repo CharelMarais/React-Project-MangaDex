@@ -15,12 +15,17 @@ export function MangaCard(props: mangaCardProp) {
 
   return (
     <div
-      className={`w-64 h-[22rem] bg-no-repeat bg-cover bg-center`}
+      className={`border-2 border-amber-500 overflow-hidden w-72 h-96 bg-no-repeat bg-cover bg-center rounded m-1 flex flex-col-reverse`}
       style={{
-        backgroundImage: `url('https://uploads.mangadex.org/covers/${props.data.id}/${coverFile}.256.jpg')`,
+        backgroundImage: `url('https://uploads.mangadex.org/covers/${props.data.id}/${coverFile}.512.jpg')`,
       }}
     >
-      <p> {props.data.attributes.title.en}</p>
+      <div className="w-full h-2/3 text-white bg-gradient-to-t from-black flex justify-end flex-col ">
+        <h2 className="font-bold px-1"> {props.data.attributes.title.en}</h2>
+        <p className="m-1 rounded-full bg-stone-600 w-fit px-2 text-[0.6rem] font-semibold uppercase">
+          {props.data.attributes.contentRating}
+        </p>
+      </div>
     </div>
   );
 }

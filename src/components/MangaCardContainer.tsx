@@ -12,7 +12,7 @@ export function MangaCardContainer() {
   const mangaListArray = mangaQuery.data;
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-center">
       {mangaListArray ? (
         mangaListArray.map((mangaData) => (
           <MangaCard key={mangaData.id} data={mangaData} />
