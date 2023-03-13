@@ -7,6 +7,7 @@ import { Header } from "./routes/Header";
 import ErrorPage from "./routes/ErrorPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MangaCardContainer } from "./routes/MangaCardContainer";
+import { MangaPage } from "./routes/MangaPage";
 
 const queryClient = new QueryClient();
 
@@ -19,12 +20,11 @@ const router = createBrowserRouter([
       {
         path: "mangalist/:orderType",
         element: <MangaCardContainer />,
-        children: [{ path: "anime/:anime", element: <MangaCardContainer /> }],
       },
-      // {
-      //   path: "anime/",
-      //   element: <MangaCardContainer />,
-      // },
+      {
+        path: "manga/:mangaId",
+        element: <MangaPage />,
+      },
     ],
   },
 ]);
