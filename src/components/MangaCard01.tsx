@@ -7,6 +7,8 @@ export function MangaCard(props: mangaCardProp) {
 
   const { title, managId, coverId, contentRating } = props;
 
+  if (!coverId) return <></>;
+
   getCoverById(coverId).then((res) => {
     setCoverFile(res.attributes.fileName);
   });

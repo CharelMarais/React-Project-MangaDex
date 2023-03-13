@@ -187,4 +187,5 @@ interface AltTitle {
 
 interface Title {
   en: string;
+  "ja-ro": string;
 }

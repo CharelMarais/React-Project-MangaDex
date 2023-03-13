@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { getManga } from "../services/apicalls";
 import { MangaData } from "../models/manga";
-import { MangaCard } from "./MangaCard01";
+import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export function MangaCardContainer() {
-  const [mangaOrderType, setMangaOrderType] = useState("");
   const { orderType } = useParams();
 
   const mangaQuery = useQuery<MangaData[], Error>([`mangaQuery`], () =>
@@ -14,9 +13,6 @@ export function MangaCardContainer() {
   );
 
   useEffect(() => {
-    if (orderType) {
-      setMangaOrderType(orderType);
-    }
     mangaQuery.refetch();
   }, [orderType]);
 
@@ -25,25 +21,27 @@ export function MangaCardContainer() {
   const mangaListIsSuccess = mangaQuery.isSuccess;
   const mangaListIsError = mangaQuery.isError;
 
-  console.log(mangaListIsLoading);
-
   return (
     <div>
       {mangaListIsLoading && <div>manga is loading</div>}
       {mangaListIsSuccess && (
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center gap-2">
           {mangaListArray ? (
             mangaListArray.map((mangaData) => {
               return (
                 <MangaCard
                   key={mangaData.id}
+                  mangaData={mangaData}
                   managId={mangaData.id}
                   coverId={
                     mangaData.relationships.find(
                       ({ type }) => type === "cover_art"
                     )?.id || ""
                   }
-                  title={mangaData?.attributes?.title?.en}
+                  title={
+                    mangaData?.attributes?.title?.en ||
+                    mangaData?.attributes?.title?.["ja-ro"]
+                  }
                   contentRating={mangaData?.attributes?.contentRating}
                 />
               );

@@ -4,7 +4,7 @@ import { Outlet, Link } from "react-router-dom";
 export function Header() {
   return (
     <>
-      <div className="bg-gray-800 mb-2 flex justify-between content-center border-b-amber-600 border-b-2">
+      <div className="bg-stone-800 mb-2 flex justify-between content-center border-b-amber-600 border-b-2">
         <Link to="/">
           <img
             className="w-12 m-0 -my-1 "
