@@ -3,31 +3,41 @@ import { getManga } from "../services/apicalls";
 import { MangaData } from "../models/manga";
 import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 export function MangaCardContainer() {
   const { orderType } = useParams();
 
-  const mangaQuery = useQuery<MangaData[], Error>([`mangaQuery`], () =>
-    getManga(orderType)
+  const { data, isLoading, isSuccess } = useQuery<MangaData[], Error>(
+    [`mangaQuery`, orderType],
+    () => getManga(orderType)
   );
 
-  useEffect(() => {
-    mangaQuery.refetch();
-  }, [orderType]);
-
-  const mangaListArray = mangaQuery.data;
-  const mangaListIsLoading = mangaQuery.isLoading;
-  const mangaListIsSuccess = mangaQuery.isSuccess;
-  const mangaListIsError = mangaQuery.isError;
+  let currentPage: string = "";
+  switch (orderType) {
+    case "rating":
+      currentPage = "Top Rated";
+      break;
+    case "createdAt":
+      currentPage = "New Releases";
+      break;
+    case "followedCount":
+      currentPage = "Most Popular";
+      break;
+    case "latestUploadedChapter":
+      currentPage = "Latest Chapters";
+      break;
+  }
 
   return (
     <div>
-      {mangaListIsLoading && <div>manga is loading</div>}
-      {mangaListIsSuccess && (
+      {isLoading && <div>manga is loading</div>}
+      {isSuccess && (
         <div className="flex flex-wrap justify-center gap-2">
-          {mangaListArray ? (
-            mangaListArray.map((mangaData) => {
+          <h2 className="w-full text-amber-500 uppercase font-semibold italic pl-4 text-lg">
+            {currentPage}
+          </h2>
+          {data ? (
+            data.map((mangaData) => {
               return (
                 <MangaCard
                   key={mangaData.id}

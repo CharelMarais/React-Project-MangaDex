@@ -20,7 +20,7 @@ export function MangaCard(props: IMangaCardProp) {
       state={[mangaData, data?.attributes.fileName]}
     >
       <div
-        className={`border-2 border-amber-500 shadow-amber-500 shadow-inner overflow-hidden w-52 h-72 bg-no-repeat bg-cover bg-center rounded m-1 flex flex-col-reverse`}
+        className={`duration-300 ease-in-out border-2 border-stone-900 hover:border-amber-500 shadow-amber-500 shadow-inner overflow-hidden w-52 h-72 bg-no-repeat bg-cover bg-center rounded-lg m-1 flex flex-col-reverse`}
         style={{
           backgroundImage: `url('https://uploads.mangadex.org/covers/${managId}/${data?.attributes.fileName}.512.jpg')`,
         }}
