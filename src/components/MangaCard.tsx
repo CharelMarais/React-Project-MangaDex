@@ -1,31 +1,37 @@
-import { useState } from "react";
-import { mangaCardProp } from "../props/coverProp";
+import { useQuery } from "@tanstack/react-query";
+import { IMangaCardProp } from "../props/coverProp";
 import { getCoverById } from "../services/apicalls";
+import { CoverData } from "../models/cover";
+import { Link, LinkProps } from "react-router-dom";
 
-export function MangaCard(props: mangaCardProp) {
-  const [coverFile, setCoverFile] = useState("");
+export function MangaCard(props: IMangaCardProp) {
+  const { managId, coverId, title, contentRating, mangaData } = props;
 
-  getCoverById(
-    props.data.relationships.find((items) => items.type === "cover_art")!.id
-  ).then((res) => {
-    setCoverFile(res.attributes.fileName);
-  });
+  const { data, isLoading, isSuccess } = useQuery<CoverData, Error>(
+    ["coverQuery", coverId],
+    () => getCoverById(coverId)
+  );
 
-  if (!coverFile) return <></>;
+  if (!data?.attributes.fileName) return <></>;
 
   return (
-    <div
-      className={`border-2 border-amber-500 overflow-hidden w-72 h-96 bg-no-repeat bg-cover bg-center rounded m-1 flex flex-col-reverse`}
-      style={{
-        backgroundImage: `url('https://uploads.mangadex.org/covers/${props.data.id}/${coverFile}.512.jpg')`,
-      }}
+    <Link
+      to={`../manga/${managId}`}
+      state={[mangaData, data?.attributes.fileName]}
     >
-      <div className="w-full h-2/3 text-white bg-gradient-to-t from-black flex justify-end flex-col ">
-        <h2 className="font-bold px-1"> {props.data.attributes.title.en}</h2>
-        <p className="m-1 rounded-full bg-stone-600 w-fit px-2 text-[0.6rem] font-semibold uppercase">
-          {props.data.attributes.contentRating}
-        </p>
+      <div
+        className={`border-2 border-amber-500 shadow-amber-500 shadow-inner overflow-hidden w-52 h-72 bg-no-repeat bg-cover bg-center rounded m-1 flex flex-col-reverse`}
+        style={{
+          backgroundImage: `url('https://uploads.mangadex.org/covers/${managId}/${data?.attributes.fileName}.512.jpg')`,
+        }}
+      >
+        <div className="w-full h-2/3 text-white bg-gradient-to-t from-black flex justify-end flex-col ">
+          <h2 className="font-bold px-2"> {title}</h2>
+          <p className="mx-2 mb-2 mt-1 rounded-full bg-stone-600 w-fit px-2 text-[0.6rem] font-semibold uppercase">
+            {contentRating}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

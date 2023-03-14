@@ -1,9 +1,14 @@
 import { CoverData } from "../models/cover";
 import { MangaData } from "../models/manga";
 
-export function getManga(): Promise<MangaData[]> {
+export function getManga(listOrder: string | undefined): Promise<MangaData[]> {
   const response = fetch(
-    `https://api.mangadex.org/manga?order[rating]=desc&limit=20&includes[]=cover_art`
+    //rating
+    //followedCount
+    //createdAt
+    //latestUploadedChapter
+    `https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art&contentRating[]=safe`
+    // `https://api.mangadex.org/manga?title=one punch man&limit=20` Search
   )
     .then((res) => res.json())
     .then((res) => res.data);
