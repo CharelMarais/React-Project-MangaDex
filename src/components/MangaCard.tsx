@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { IMangaCardProp } from "../props/coverProp";
 import { getCoverById } from "../services/apicalls";
-import { CoverData } from "../models/cover";
-import { Link, LinkProps } from "react-router-dom";
+import { ICoverData } from "../models/cover";
+import { Link } from "react-router-dom";
 
 export function MangaCard(props: IMangaCardProp) {
   const { managId, coverId, title, contentRating, mangaData } = props;
 
-  const { data, isLoading, isSuccess } = useQuery<CoverData, Error>(
+  const { data, isLoading, isSuccess } = useQuery<ICoverData, Error>(
     ["coverQuery", coverId],
     () => getCoverById(coverId)
   );

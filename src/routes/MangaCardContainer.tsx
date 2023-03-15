@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { getManga } from "../services/apicalls";
-import { MangaData } from "../models/manga";
+import { IMangaData } from "../models/manga";
 import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
 
 export function MangaCardContainer() {
   const { orderType } = useParams();
 
-  const { data, isLoading, isSuccess } = useQuery<MangaData[], Error>(
+  const { data, isLoading, isSuccess } = useQuery<IMangaData[], Error>(
     [`mangaQuery`, orderType],
     () => getManga(orderType)
   );

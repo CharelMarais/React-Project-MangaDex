@@ -4,7 +4,7 @@ import { DropDownSelector } from "../components/DropDownSelector";
 export function Header() {
   return (
     <>
-      <div className="bg-stone-800 mb-2 flex justify-between content-center border-b-amber-600 border-b-2">
+      <div className="bg-stone-800 mb-2 w-full flex justify-between content-center border-b-amber-600 border-b-2 fixed">
         <Link to="/">
           <img
             className="w-12 m-0 -my-1 "
@@ -21,6 +21,7 @@ export function Header() {
           <DropDownSelector />
         </div>
       </div>
+      <div className="h-12"></div>
 
       <Outlet />
     </>

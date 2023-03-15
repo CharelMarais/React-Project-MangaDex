@@ -1,10 +1,10 @@
-import { MangaData } from "../models/manga";
+import { IMangaData } from "../models/manga";
 
 export type IMangaCardProp = {
   managId: string;
   coverId: string;
   title: string;
   contentRating: string;
-  mangaData: MangaData;
+  mangaData: IMangaData;
   className?: string;
 };

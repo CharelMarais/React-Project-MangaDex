@@ -1,10 +1,10 @@
-interface CoverObject {
+interface ICoverObject {
   result: string;
   response: string;
-  data: CoverData;
+  data: ICoverData;
 }
 
-export interface CoverData {
+export interface ICoverData {
   id: string;
   type: string;
   attributes: Attributes;
