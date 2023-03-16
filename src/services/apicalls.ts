@@ -1,14 +1,12 @@
-import { CoverData } from "../models/cover";
-import { MangaData } from "../models/manga";
+import { IChapterObject } from "../models/chapter";
+import { IChapterData } from "../models/chapterList";
+import { ICoverData } from "../models/cover";
+import { IMangaData } from "../models/manga";
 
-export function getManga(listOrder: string | undefined): Promise<MangaData[]> {
+export function getManga(listOrder: string | undefined): Promise<IMangaData[]> {
   const response = fetch(
-    //rating
-    //followedCount
-    //createdAt
-    //latestUploadedChapter
     `https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art&contentRating[]=safe`
-    // `https://api.mangadex.org/manga?title=one punch man&limit=20` Search
+    // `https://api.mangadex.org/manga?title={searchText}n&limit=20` Search to be inplemented with this code
   )
     .then((res) => res.json())
     .then((res) => res.data);
@@ -16,8 +14,8 @@ export function getManga(listOrder: string | undefined): Promise<MangaData[]> {
   return response;
 }
 
-export function getCoverById(id: string): Promise<CoverData> {
-  const response: Promise<CoverData> = fetch(
+export function getCoverById(id: string): Promise<ICoverData> {
+  const response: Promise<ICoverData> = fetch(
     `https://api.mangadex.org/cover/${id}`
   )
     .then((res) => res.json())
@@ -25,6 +23,26 @@ export function getCoverById(id: string): Promise<CoverData> {
     .catch((error) => {
       console.log(error);
     });
+
+  return response;
+}
+
+export function getChapterFeedById(mangaId: string): Promise<IChapterData[]> {
+  const response = fetch(
+    `https://api.mangadex.org/manga/${mangaId}/feed?translatedLanguage[]=en&limit=500`
+  )
+    .then((res) => res.json())
+    .then((res) => res.data);
+
+  return response;
+}
+
+export function getChapterImagesById(
+  chapterId: string
+): Promise<IChapterObject> {
+  const response = fetch(`https://api.mangadex.org/at-home/server/${chapterId}`)
+    .then((res) => res.json())
+    .then((res) => res.chapter);
 
   return response;
 }

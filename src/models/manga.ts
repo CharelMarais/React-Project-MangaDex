@@ -1,13 +1,13 @@
-export interface MangaObject {
+export interface IMangaObject {
   result: string;
   response: string;
-  data: MangaData;
+  data: IMangaData;
   limit: number;
   offset: number;
   total: number;
 }
 
-export interface MangaData {
+export interface IMangaData {
   id: string;
   type: string;
   attributes: Attributes2;

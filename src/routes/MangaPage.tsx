@@ -1,10 +1,17 @@
 import { useLocation } from "react-router-dom";
+import { ChapterFeed } from "../components/ChapterFeed";
+import { MangaInfoSheet } from "../components/MangaInfoSheet";
+import { IMangaData } from "../models/manga";
 
 export function MangaPage() {
   const location = useLocation();
-  const test = location.state;
+  const mangaData: IMangaData = location.state[0];
+  const coverFile: string = location.state[1];
 
-  console.log(test); // just here to test data for now
-
-  return <h1>hi</h1>;
+  return (
+    <>
+      <MangaInfoSheet mangaData={mangaData} coverFile={coverFile} />
+      <ChapterFeed mangaId={mangaData.id} />
+    </>
+  );
 }
