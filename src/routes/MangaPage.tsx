@@ -9,9 +9,9 @@ export function MangaPage() {
   const coverFile: string = location.state[1];
 
   return (
-    <>
+    <div className="pt-14">
       <MangaInfoSheet mangaData={mangaData} coverFile={coverFile} />
       <ChapterFeed mangaId={mangaData.id} />
-    </>
+    </div>
   );
 }

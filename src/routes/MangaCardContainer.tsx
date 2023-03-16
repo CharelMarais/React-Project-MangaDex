@@ -29,7 +29,7 @@ export function MangaCardContainer() {
   }
 
   return (
-    <div>
+    <div className="pt-14">
       {isLoading && <div>manga is loading</div>}
       {isSuccess && (
         <div className="flex flex-wrap justify-center gap-2">

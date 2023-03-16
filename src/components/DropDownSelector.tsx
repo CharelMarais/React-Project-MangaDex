@@ -11,7 +11,7 @@ export function DropDownSelector() {
         className=""
         type="button"
       >
-        <TbListSearch className="text-amber-500 text-3xl w-full h-full font-bold pr-2 -pl-2" />
+        <TbListSearch className="text-amber-500 text-3xl w-full h-full font-bold px-2 pb-[1px]" />
       </button>
 
       <div
@@ -33,6 +33,9 @@ export function DropDownSelector() {
           </li>
           <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
             <Link to="mangalist/latestUploadedChapter">New Chapters</Link>
+          </li>
+          <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
+            <Link to="suspage/">Sus Page</Link>
           </li>
         </ul>
       </div>

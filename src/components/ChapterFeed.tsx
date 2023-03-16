@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { IChapterData } from "../models/chapterList";
 import { IMangaChapterFeedProp } from "../props/mangaProps";
 import { getChapterFeedById } from "../services/apicalls";
@@ -23,12 +24,12 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
         })
         .map((data) => {
           return (
-            <p
-              key={data.id}
-              className="cursor-pointer text-neutral-400 hover:bg-stone-700"
-            >
-              Chapter: {data.attributes.chapter} Pages: {data.attributes.pages}
-            </p>
+            <Link key={data.id} to={`../manga/chapter/${data.id}`}>
+              <p className="cursor-pointer text-neutral-400 hover:bg-stone-700">
+                Chapter: {data.attributes.chapter} Pages:{" "}
+                {data.attributes.pages}
+              </p>
+            </Link>
           );
         })}
     </div>

@@ -7,6 +7,9 @@ import ErrorPage from "./routes/ErrorPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MangaCardContainer } from "./routes/MangaCardContainer";
 import { MangaPage } from "./routes/MangaPage";
+import { SusPage } from "./routes/SusPage";
+import { LandingPage } from "./routes/LandingPage";
+import { MangaReader } from "./routes/MangaReader";
 
 const queryClient = new QueryClient();
 
@@ -17,12 +20,24 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
         path: "mangalist/:orderType",
         element: <MangaCardContainer />,
       },
       {
         path: "manga/:mangaId",
         element: <MangaPage />,
+      },
+      {
+        path: "manga/chapter/:chapterId",
+        element: <MangaReader />,
+      },
+      {
+        path: "suspage/",
+        element: <SusPage />,
       },
     ],
   },
