@@ -1,4 +1,4 @@
-import { IChapterObject } from "../models/chapter";
+import { IChapter } from "../models/chapter";
 import { IChapterData } from "../models/chapterList";
 import { ICoverData } from "../models/cover";
 import { IMangaData } from "../models/manga";
@@ -38,8 +38,8 @@ export function getChapterFeedById(mangaId: string): Promise<IChapterData[]> {
 }
 
 export function getChapterImagesById(
-  chapterId: string
-): Promise<IChapterObject> {
+  chapterId: string | undefined
+): Promise<IChapter> {
   const response = fetch(`https://api.mangadex.org/at-home/server/${chapterId}`)
     .then((res) => res.json())
     .then((res) => res.chapter);

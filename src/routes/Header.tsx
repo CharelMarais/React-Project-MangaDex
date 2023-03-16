@@ -17,11 +17,10 @@ export function Header() {
           K<span className="text-lg">ame</span> H
           <span className="text-lg">ouse</span>
         </h1>
-        <div className="flex justify-center items-center m-2">
+        <div className="flex justify-center items-center">
           <DropDownSelector />
         </div>
       </div>
-      <div className="h-12"></div>
 
       <Outlet />
     </>
