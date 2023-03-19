@@ -14,7 +14,7 @@ export function MangaReader() {
   );
 
   return (
-    <div className="py-16 px-4 flex flex-col items-center h-full w-full">
+    <div className="flex h-full w-full flex-col items-center py-16 px-4">
       {isError && <ErrorComponent />}
       {isLoading && <Loading />}
       {isSuccess &&

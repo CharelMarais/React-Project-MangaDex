@@ -4,20 +4,20 @@ import { DropDownSelector } from "../components/DropDownSelector";
 export function Header() {
   return (
     <>
-      <div className="bg-stone-800 mb-2 w-full flex justify-between content-center border-b-amber-600 border-b-2 fixed">
+      <div className="fixed mb-2 flex w-full content-center justify-between border-b-2 border-b-amber-600 bg-stone-800">
         <Link to="/">
           <img
-            className="w-12 m-0 -my-1 "
+            className="m-0 -my-1 w-12 "
             src="/src/assets/img/logo.png"
             alt="logo"
           />
         </Link>
 
-        <h1 className="text-amber-500 flex antialiased flex-auto items-center font-mono uppercase font-bold text-3xl">
+        <h1 className="flex flex-auto items-center font-mono text-3xl font-bold uppercase text-amber-500 antialiased">
           K<span className="text-lg">ame</span> H
           <span className="text-lg">ouse</span>
         </h1>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <DropDownSelector />
         </div>
       </div>

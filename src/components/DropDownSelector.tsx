@@ -11,30 +11,30 @@ export function DropDownSelector() {
         className=""
         type="button"
       >
-        <TbListSearch className="text-amber-500 text-3xl w-full h-full font-bold px-2 pb-[1px]" />
+        <TbListSearch className="h-full w-full px-2 pb-[1px] text-3xl font-bold text-amber-500" />
       </button>
 
       <div
         id="dropdown"
-        className=" z-10 hidden bg-stone-800 divide-y divide-gray-100 rounded-b-lg shadow w-44 border-x-2 border-b-2 border-amber-600"
+        className=" z-10 hidden w-44 divide-y divide-gray-100 rounded-b-lg border-x-2 border-b-2 border-amber-600 bg-stone-800 shadow"
       >
         <ul
           className=" text-sm text-amber-500"
           aria-labelledby="dropdownDefaultButton"
         >
-          <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="mangalist/createdAt">New Release </Link>
           </li>
-          <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="mangalist/rating">Top Rated </Link>
           </li>
-          <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="mangalist/followedCount">Most Popular </Link>
           </li>
-          <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="mangalist/latestUploadedChapter">New Chapters</Link>
           </li>
-          <li className="text-lg px-2 py-1 m-2 hover:bg-stone-600 rounded">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="suspage/">Sus Page</Link>
           </li>
         </ul>

@@ -7,14 +7,14 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const toggleDescription = () => setExpandDescription(!expandDescription);
 
   return (
-    <div className=" bg-stone-800 rounded-3xl flex flex-col m-6 overflow-hidden sm:items-center md:flex-row md:justify-start md:items-start">
+    <div className=" m-6 flex flex-col overflow-hidden rounded-3xl bg-stone-800 sm:items-center md:flex-row md:items-start md:justify-start">
       <img
-        className={` w-full h-fit sm:w-96 sm:mt-6 sm:rounded-lg  md:m-0 md:rounded-none`}
+        className={` h-fit w-full sm:mt-6 sm:w-96 sm:rounded-lg  md:m-0 md:rounded-none`}
         src={`https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg`}
       ></img>
 
-      <div className="flex flex-col text-neutral-300 p-6 pt-4 w-full ">
-        <h2 className="w-full text-amber-500 uppercase font-semibold italic text-lg mb-2">
+      <div className="flex w-full flex-col p-6 pt-4 text-neutral-300 ">
+        <h2 className="mb-2 w-full text-lg font-semibold uppercase italic text-amber-500">
           {mangaData?.attributes?.title?.en ||
             mangaData?.attributes?.title?.["ja-ro"]}
         </h2>
@@ -22,8 +22,8 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
           onClick={toggleDescription}
           className={
             expandDescription
-              ? `w-full min-h-[5rem] h-fit transition-all duration-500 cursor-pointer`
-              : `w-full min-h-[5rem] h-20  from-stone-800 to-neutral-200 via-neutral-200 bg-gradient-to-t bg-clip-text text-transparent cursor-pointer  transition-all duration-500 overflow-hidden`
+              ? `h-fit min-h-[5rem] w-full cursor-pointer transition-all duration-500`
+              : `h-20 min-h-[5rem] w-full  cursor-pointer overflow-hidden bg-gradient-to-t from-stone-800 via-neutral-200 to-neutral-200 bg-clip-text  text-transparent transition-all duration-500`
           }
         >
           <p className="">
@@ -36,7 +36,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
               return (
                 <p
                   key={tag.id}
-                  className="m-1 ml-0 rounded-full bg-stone-600 w-fit px-2 text-[0.6rem] font-semibold uppercase"
+                  className="m-1 ml-0 w-fit rounded-full bg-stone-600 px-2 text-[0.6rem] font-semibold uppercase"
                 >
                   {tag.attributes.name.en}
                 </p>
@@ -46,19 +46,19 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
         </div>
         <p>
           Release Year:{" "}
-          <span className="italic m-1 ml-0 rounded-full bg-stone-600 w-fit px-2 text-sm font-semibold uppercase">
+          <span className="m-1 ml-0 w-fit rounded-full bg-stone-600 px-2 text-sm font-semibold uppercase italic">
             {mangaData.attributes.year}
           </span>
         </p>
         <p>
           Status:{" "}
-          <span className="italic m-1 ml-0 rounded-full bg-stone-600 w-fit px-2 text-sm font-semibold uppercase">
+          <span className="m-1 ml-0 w-fit rounded-full bg-stone-600 px-2 text-sm font-semibold uppercase italic">
             {mangaData.attributes.status}
           </span>
         </p>
         <p>
           State:{" "}
-          <span className="italic m-1 ml-0 rounded-full bg-stone-600 w-fit px-2 text-sm font-semibold uppercase">
+          <span className="m-1 ml-0 w-fit rounded-full bg-stone-600 px-2 text-sm font-semibold uppercase italic">
             {mangaData.attributes.state}
           </span>
         </p>
