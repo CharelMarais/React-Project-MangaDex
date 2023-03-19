@@ -3,11 +3,8 @@ import { ErrorComponent } from "../components/ErrorComponent";
 import { Header } from "./Header";
 
 export default function ErrorPage() {
-  // const error: any = useRouteError();
-  // console.error(error);
-
   return (
-    <div id="error-page" className="100% h-full">
+    <div id="error-page" className="h-full w-full flex">
       <Header />
       <ErrorComponent />
     </div>

@@ -31,7 +31,7 @@ export function MangaCardContainer() {
   }
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 w-full">
       {isError && <ErrorComponent />}
       {isLoading && <Loading />}
       {isSuccess && (

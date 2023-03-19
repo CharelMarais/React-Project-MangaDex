@@ -7,9 +7,9 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const toggleDescription = () => setExpandDescription(!expandDescription);
 
   return (
-    <div className=" bg-stone-800 rounded-3xl flex flex-col m-6 overflow-hidden">
+    <div className=" bg-stone-800 rounded-3xl flex flex-col m-6 overflow-hidden sm:items-center md:flex-row md:justify-start md:items-start">
       <img
-        className={` overflow-hidden w-full h-fit flex flex-col-reverse`}
+        className={` w-full h-fit sm:w-96 sm:mt-6 sm:rounded-lg  md:m-0 md:rounded-none`}
         src={`https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg`}
       ></img>
 
