@@ -5,7 +5,7 @@ import { IMangaData } from "../models/manga";
 
 export function getManga(listOrder: string | undefined): Promise<IMangaData[]> {
   const response = fetch(
-    `https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art&contentRating[]=safe`
+    `https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art`
     // `https://api.mangadex.org/manga?title={searchText}n&limit=20` Search to be inplemented with this code
   )
     .then((res) => res.json())
@@ -19,10 +19,7 @@ export function getCoverById(id: string): Promise<ICoverData> {
     `https://api.mangadex.org/cover/${id}`
   )
     .then((res) => res.json())
-    .then((res) => res.data)
-    .catch((error) => {
-      console.log(error);
-    });
+    .then((res) => res.data);
 
   return response;
 }

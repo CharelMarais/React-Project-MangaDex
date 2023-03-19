@@ -3,11 +3,13 @@ import { getManga } from "../services/apicalls";
 import { IMangaData } from "../models/manga";
 import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
+import { ErrorComponent } from "../components/ErrorComponent";
+import Loading from "../components/Loading";
 
 export function MangaCardContainer() {
   const { orderType } = useParams();
 
-  const { data, isLoading, isSuccess } = useQuery<IMangaData[], Error>(
+  const { data, isLoading, isSuccess, isError } = useQuery<IMangaData[], Error>(
     [`mangaQuery`, orderType],
     () => getManga(orderType)
   );
@@ -29,36 +31,34 @@ export function MangaCardContainer() {
   }
 
   return (
-    <div className="pt-14">
-      {isLoading && <div>manga is loading</div>}
+    <div className="pt-16">
+      {isError && <ErrorComponent />}
+      {isLoading && <Loading />}
       {isSuccess && (
         <div className="flex flex-wrap justify-center gap-2">
-          <h2 className="w-full text-amber-500 uppercase font-semibold italic pl-4 text-lg">
+          <h2 className="w-full text-amber-500 uppercase font-semibold italic pl-4 text-lg ">
             {currentPage}
           </h2>
-          {data ? (
-            data.map((mangaData) => {
-              return (
-                <MangaCard
-                  key={mangaData.id}
-                  mangaData={mangaData}
-                  managId={mangaData.id}
-                  coverId={
-                    mangaData.relationships.find(
-                      ({ type }) => type === "cover_art"
-                    )?.id || ""
-                  }
-                  title={
-                    mangaData?.attributes?.title?.en ||
-                    mangaData?.attributes?.title?.["ja-ro"]
-                  }
-                  contentRating={mangaData?.attributes?.contentRating}
-                />
-              );
-            })
-          ) : (
-            <h1>Test</h1>
-          )}
+
+          {data.map((mangaData) => {
+            return (
+              <MangaCard
+                key={mangaData.id}
+                mangaData={mangaData}
+                managId={mangaData.id}
+                coverId={
+                  mangaData.relationships.find(
+                    ({ type }) => type === "cover_art"
+                  )?.id || ""
+                }
+                title={
+                  mangaData?.attributes?.title?.en ||
+                  mangaData?.attributes?.title?.["ja-ro"]
+                }
+                contentRating={mangaData?.attributes?.contentRating}
+              />
+            );
+          })}
         </div>
       )}
     </div>
