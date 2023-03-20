@@ -3,25 +3,25 @@ import { IMangaData } from "../models/manga";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { IMangaStore } from "../models/favoriteManga";
 
-export const useMangaFavoriteStore = create<IMangaStore>()(
+export const useMangaFavouriteStore = create<IMangaStore>()(
   persist(
     (set, get) => ({
-      favoriteMangas: [],
-      addFavoriteManga: (mangaData: IMangaData) =>
+      favouriteMangas: [],
+      addFavouriteManga: (mangaData: IMangaData) =>
         set({
-          favoriteMangas: get().favoriteMangas.includes(mangaData)
-            ? get().favoriteMangas
-            : [...get().favoriteMangas, mangaData],
+          favouriteMangas: get().favouriteMangas.includes(mangaData)
+            ? get().favouriteMangas
+            : [...get().favouriteMangas, mangaData],
         }),
-      removeFavoriteManga: (mangaData: IMangaData) =>
+      removeFavouriteManga: (mangaData: IMangaData) =>
         set({
-          favoriteMangas: get().favoriteMangas.filter(
-            (favorite: IMangaData) => favorite !== mangaData
+          favouriteMangas: get().favouriteMangas.filter(
+            (favourite: IMangaData) => favourite !== mangaData
           ),
         }),
     }),
     {
-      name: "favoriteMangaStorage",
+      name: "favouriteMangaStorage",
       storage: createJSONStorage(() => localStorage),
     }
   )

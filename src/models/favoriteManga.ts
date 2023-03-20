@@ -1,7 +1,7 @@
 import { IMangaData } from "./manga";
 
 export type IMangaStore = {
-  favoriteMangas: IMangaData[];
-  addFavoriteManga: (mangaData: IMangaData) => void;
-  removeFavoriteManga: (mangaData: IMangaData) => void;
+  favouriteMangas: IMangaData[];
+  addFavouriteManga: (mangaData: IMangaData) => void;
+  removeFavouriteManga: (mangaData: IMangaData) => void;
 };

@@ -1,20 +1,20 @@
 import { MangaCard } from "../components/MangaCard";
 import { ErrorComponent } from "../components/ErrorComponent";
 import Loading from "../components/Loading";
-import { useMangaFavoriteStore } from "../store/zustore";
+import { useMangaFavouriteStore } from "../store/zustore";
 
-export function FavoriteMangaCardContainer() {
-  const favoritedMangas = useMangaFavoriteStore().favoriteMangas;
+export function FavouriteMangaCardContainer() {
+  const favouritedMangas = useMangaFavouriteStore().favouriteMangas;
 
   return (
     <div className="h-full w-full pt-16">
       <div className="flex h-full flex-col flex-wrap gap-2">
         <h2 className="w-fit pl-4 text-lg font-semibold uppercase italic text-amber-500 ">
-          Favorites
+          Favourites
         </h2>
-        {favoritedMangas.length ? (
+        {favouritedMangas.length ? (
           <div className="flex flex-wrap justify-center gap-2">
-            {favoritedMangas.map((mangaData) => {
+            {favouritedMangas.map((mangaData) => {
               return (
                 <MangaCard
                   key={mangaData.id}
@@ -36,7 +36,7 @@ export function FavoriteMangaCardContainer() {
           </div>
         ) : (
           <div className="m-auto flex h-fit flex-col items-center text-neutral-200 ">
-            <p>No favorites saved... yet!!!</p>
+            <p>No favourites saved... yet!!!</p>
             <p>We have many flavours to choose from</p>
             <img
               className="w-60"

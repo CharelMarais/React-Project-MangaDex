@@ -1,28 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMangaInfoProp } from "../props/mangaProps";
-import { useMangaFavoriteStore } from "../store/zustore";
+import { useMangaFavouriteStore } from "../store/zustore";
 
 export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [expandDescription, setExpandDescription] = useState(false);
   const isFavorited = useRef(false);
-  const favoritedMangas = useMangaFavoriteStore();
+  const favoritedMangas = useMangaFavouriteStore();
 
-  if (favoritedMangas.favoriteMangas.includes(mangaData)) {
+  if (favoritedMangas.favouriteMangas.includes(mangaData)) {
     isFavorited.current = true;
   }
 
-  const addFavoriteManga = useMangaFavoriteStore(
-    (state) => state.addFavoriteManga
+  const addFavoriteManga = useMangaFavouriteStore(
+    (state) => state.addFavouriteManga
   );
 
-  const removeFavoriteManga = useMangaFavoriteStore(
-    (state) => state.removeFavoriteManga
+  const removeFavoriteManga = useMangaFavouriteStore(
+    (state) => state.removeFavouriteManga
   );
 
   const handleAddFavorite = () => {
     if (
-      favoritedMangas.favoriteMangas
+      favoritedMangas.favouriteMangas
         .map((data) => data.id)
         .includes(mangaData.id)
     ) {
@@ -49,7 +49,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
             {mangaData?.attributes?.title?.en ||
               mangaData?.attributes?.title?.["ja-ro"]}
           </h2>
-          {favoritedMangas.favoriteMangas
+          {favoritedMangas.favouriteMangas
             .map((data) => data.id)
             .includes(mangaData.id) ? (
             <button

@@ -39,7 +39,7 @@ export function DropDownSelector() {
             <Link to="mangalist/latestUploadedChapter">New Chapters</Link>
           </li>
           <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
-            <Link to="favorites/">Favorites</Link>
+            <Link to="favourites/">Favourites</Link>
           </li>
           <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="suspage/">Sus Page</Link>
