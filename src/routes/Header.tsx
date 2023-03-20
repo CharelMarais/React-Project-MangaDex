@@ -7,7 +7,7 @@ export function Header() {
       <div className="fixed mb-2 flex w-full content-center justify-between border-b-2 border-b-amber-600 bg-stone-800">
         <Link to="/">
           <img
-            className="m-0 -my-1 w-12 "
+            className="m-0  w-12 p-1 "
             src="/src/assets/img/logo.png"
             alt="logo"
           />

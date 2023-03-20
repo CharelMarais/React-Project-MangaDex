@@ -10,6 +10,7 @@ import { MangaPage } from "./routes/MangaPage";
 import { SusPage } from "./routes/SusPage";
 import { LandingPage } from "./routes/LandingPage";
 import { MangaReader } from "./routes/MangaReader";
+import { FavoriteMangaCardContainer } from "./routes/FavoriteMangaCardContainer";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "search/:searchValue",
         element: <MangaCardContainer />,
+      },
+      {
+        path: "favorites/",
+        element: <FavoriteMangaCardContainer />,
       },
       {
         path: "manga/:mangaId",
