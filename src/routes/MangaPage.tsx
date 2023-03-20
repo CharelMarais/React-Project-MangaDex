@@ -10,7 +10,7 @@ export function MangaPage() {
   const coverFile: string = location.state[1];
 
   return (
-    <div className="pt-14">
+    <div className="w-full pt-14">
       {mangaData && coverFile ? (
         <div>
           <MangaInfoSheet mangaData={mangaData} coverFile={coverFile} />

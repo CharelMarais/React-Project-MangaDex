@@ -31,12 +31,12 @@ export function MangaCardContainer() {
   }
 
   return (
-    <div className="pt-16">
+    <div className="w-full pt-16">
       {isError && <ErrorComponent />}
       {isLoading && <Loading />}
       {isSuccess && (
         <div className="flex flex-wrap justify-center gap-2">
-          <h2 className="w-full text-amber-500 uppercase font-semibold italic pl-4 text-lg ">
+          <h2 className="w-full pl-4 text-lg font-semibold uppercase italic text-amber-500 ">
             {currentPage}
           </h2>
 

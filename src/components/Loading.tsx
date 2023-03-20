@@ -1,6 +1,6 @@
 function Loading() {
   return (
-    <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center flex-col">
+    <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center">
       <div className=" grid h-44 w-44 content-center justify-center ">
         <img
           className="col-start-1 row-start-1 animate-pulse"

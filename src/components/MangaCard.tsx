@@ -24,14 +24,14 @@ export function MangaCard(props: IMangaCardProp) {
           state={[mangaData, data?.attributes.fileName]}
         >
           <div
-            className={`duration-300 ease-in-out border-2 border-stone-900 hover:border-amber-500 shadow-amber-500 shadow-inner overflow-hidden w-52 h-72 bg-no-repeat bg-cover bg-center rounded-lg m-1 flex flex-col-reverse`}
+            className={`m-1 flex h-72 w-52 flex-col-reverse overflow-hidden rounded-lg border-2 border-stone-900 bg-cover bg-center bg-no-repeat shadow-inner shadow-amber-500 duration-300 ease-in-out hover:border-amber-500`}
             style={{
               backgroundImage: `url('https://uploads.mangadex.org/covers/${managId}/${data?.attributes.fileName}.512.jpg')`,
             }}
           >
-            <div className="w-full h-2/3 text-white bg-gradient-to-t from-black flex justify-end flex-col ">
-              <h2 className="font-bold px-2"> {title}</h2>
-              <p className="mx-2 mb-2 mt-1 rounded-full bg-stone-600 w-fit px-2 text-[0.6rem] font-semibold uppercase">
+            <div className="flex h-2/3 w-full flex-col justify-end bg-gradient-to-t from-black text-white ">
+              <h2 className="px-2 font-bold"> {title}</h2>
+              <p className="mx-2 mb-2 mt-1 w-fit rounded-full bg-stone-600 px-2 text-[0.6rem] font-semibold uppercase">
                 {contentRating}
               </p>
             </div>
