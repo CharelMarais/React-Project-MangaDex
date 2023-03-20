@@ -1,6 +1,7 @@
 import { TbListSearch } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import "flowbite";
+import SearchManga from "./SearchManga";
 
 export function DropDownSelector() {
   return (
@@ -22,6 +23,9 @@ export function DropDownSelector() {
           className=" text-sm text-amber-500"
           aria-labelledby="dropdownDefaultButton"
         >
+          <li className="">
+            <SearchManga></SearchManga>
+          </li>
           <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
             <Link to="mangalist/createdAt">New Release </Link>
           </li>

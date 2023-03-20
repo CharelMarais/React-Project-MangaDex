@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         element: <MangaCardContainer />,
       },
       {
+        path: "search/:searchValue",
+        element: <MangaCardContainer />,
+      },
+      {
         path: "manga/:mangaId",
         element: <MangaPage />,
       },
