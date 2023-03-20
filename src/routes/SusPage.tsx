@@ -1,6 +1,6 @@
 export function SusPage() {
   return (
-    <div className="h-full pt-14">
+    <div className="h-full w-full pt-14">
       <iframe
         width="100%"
         height="100%"

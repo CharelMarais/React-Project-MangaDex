@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getManga } from "../services/apicalls";
+import { getManga, getMangaSearchResults } from "../services/apicalls";
 import { IMangaData } from "../models/manga";
 import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
@@ -8,11 +8,34 @@ import Loading from "../components/Loading";
 
 export function MangaCardContainer() {
   const { orderType } = useParams();
+  const { searchValue } = useParams();
 
-  const { data, isLoading, isSuccess, isError } = useQuery<IMangaData[], Error>(
-    [`mangaQuery`, orderType],
-    () => getManga(orderType)
-  );
+  if (!(orderType || searchValue)) return <ErrorComponent />;
+
+  let data: IMangaData[] | undefined;
+  let isLoading: boolean;
+  let isSuccess: boolean;
+  let isError: boolean;
+
+  if (orderType) {
+    const queryResult = useQuery<IMangaData[], Error>(
+      [`mangaQuery`, orderType],
+      () => getManga(orderType)
+    );
+    data = queryResult.data;
+    isLoading = queryResult.isLoading;
+    isSuccess = queryResult.isSuccess;
+    isError = queryResult.isError;
+  } else {
+    const queryResult = useQuery<IMangaData[], Error>(
+      [`mangaSearchQuery`, searchValue],
+      () => getMangaSearchResults(searchValue)
+    );
+    data = queryResult.data;
+    isLoading = queryResult.isLoading;
+    isSuccess = queryResult.isSuccess;
+    isError = queryResult.isError;
+  }
 
   let currentPage: string = "";
   switch (orderType) {
@@ -37,10 +60,10 @@ export function MangaCardContainer() {
       {isSuccess && (
         <div className="flex flex-wrap justify-center gap-2">
           <h2 className="w-full pl-4 text-lg font-semibold uppercase italic text-amber-500 ">
-            {currentPage}
+            {currentPage || `Results: ${searchValue}`}
           </h2>
 
-          {data.map((mangaData) => {
+          {data?.map((mangaData) => {
             return (
               <MangaCard
                 key={mangaData.id}

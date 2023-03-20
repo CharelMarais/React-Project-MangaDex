@@ -9,10 +9,18 @@ export function getManga(listOrder: string | undefined): Promise<IMangaData[]> {
     // `https://api.mangadex.org/manga?title={searchText}n&limit=20` Search to be inplemented with this code
   )
     .then((res) => res.json())
-    .then((res) => res.data)
-    .catch((error) => {
-      console.log(error);
-    });
+    .then((res) => res.data);
+
+  return response;
+}
+export function getMangaSearchResults(
+  searchValue: string | undefined
+): Promise<IMangaData[]> {
+  const response = fetch(
+    `https://api.mangadex.org/manga?title=${searchValue}&limit=20&includes[]=cover_art&contentRating[]=safe`
+  )
+    .then((res) => res.json())
+    .then((res) => res.data);
 
   return response;
 }
