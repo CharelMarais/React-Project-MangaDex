@@ -1,7 +1,9 @@
+import "animate.css";
+
 export function LandingPage() {
   return (
-    <div className="m-auto flex max-h-full flex-grow flex-col items-center justify-center px-6 pt-14 text-center text-neutral-200">
-      <p className="flex flex-col items-center pt-2 text-center text-4xl font-semibold sm:text-5xl">
+    <div className="m-auto flex h-full flex-grow flex-col items-center justify-center px-6 pt-14 text-center text-neutral-200">
+      <p className="animate__animated animate__zoomInDown flex flex-col items-center pt-2 text-center text-4xl font-semibold sm:text-5xl">
         WELCOME TO
         <span className="flex flex-auto items-center text-center font-mono uppercase text-amber-500 antialiased sm:text-3xl md:text-5xl">
           K<span className="text-lg sm:text-xl md:text-2xl">ame</span> H
