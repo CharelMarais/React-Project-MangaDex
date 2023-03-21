@@ -1,6 +1,4 @@
 import { MangaCard } from "../components/MangaCard";
-import { ErrorComponent } from "../components/ErrorComponent";
-import Loading from "../components/Loading";
 import { useMangaFavouriteStore } from "../store/zustore";
 
 export function FavouriteMangaCardContainer() {
