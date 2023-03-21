@@ -6,12 +6,12 @@ export function FavouriteMangaCardContainer() {
 
   return (
     <div className="h-full w-full pt-16">
-      <div className="flex h-full flex-col flex-wrap gap-2">
+      <div className="flex h-full w-full flex-col flex-wrap gap-2">
         <h2 className="w-fit pl-4 text-lg font-semibold uppercase italic text-amber-500 ">
           Favourites
         </h2>
         {favouritedMangas.length ? (
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex w-full flex-wrap justify-center gap-2">
             {favouritedMangas.map((mangaData) => {
               return (
                 <MangaCard
