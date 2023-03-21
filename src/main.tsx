@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Root from "./routes/Root";
 import "./styles/index.css";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./routes/ErrorPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MangaCardContainer } from "./routes/MangaCardContainer";
@@ -11,7 +11,6 @@ import { SusPage } from "./routes/SusPage";
 import { LandingPage } from "./routes/LandingPage";
 import { MangaReader } from "./routes/MangaReader";
 import { FavouriteMangaCardContainer } from "./routes/FavouriteMangaCardContainer";
-import App from "./App";
 
 const queryClient = new QueryClient();
 
@@ -56,7 +55,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App router={router} />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>
 );

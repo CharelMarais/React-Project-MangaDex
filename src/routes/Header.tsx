@@ -21,8 +21,6 @@ export function Header() {
           <DropDownSelector />
         </div>
       </div>
-
-      <Outlet />
     </>
   );
 }
