@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMangaInfoProp } from "../props/mangaProps";
 import { useMangaFavouriteStore } from "../store/zustore";

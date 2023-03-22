@@ -12,6 +12,7 @@ export function DropDownSelector() {
         data-dropdown-trigger="hover"
         className="inline-flex items-center rounded-lg px-4 py-0 text-center focus:outline-none "
         type="button"
+        aria-label="menu-button"
       >
         <TbListSearch className="h-full w-full px-2 pb-[1px] text-3xl font-bold text-amber-500" />
       </button>
