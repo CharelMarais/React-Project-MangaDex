@@ -19,7 +19,7 @@ export function DropDownSelector() {
 
       <div
         id="dropdownHover"
-        className=" z-10 hidden w-44 divide-y divide-gray-100 rounded-b-lg border-x-2 border-b-2 border-amber-600 bg-stone-800 shadow"
+        className=" z-100 hidden w-44 divide-y divide-gray-100 rounded-b-lg border-x-2 border-b-2 border-amber-600 bg-stone-800 shadow"
       >
         <ul
           className=" text-sm text-amber-500"
