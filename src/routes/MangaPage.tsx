@@ -3,11 +3,13 @@ import { ChapterFeed } from "../components/ChapterFeed";
 import { ErrorComponent } from "../components/ErrorComponent";
 import { MangaInfoSheet } from "../components/MangaInfoSheet";
 import { IMangaData } from "../models/manga";
+import { useScrollToTop } from "../services/scrollToTop";
 
 export function MangaPage() {
   const location = useLocation();
   const mangaData: IMangaData = location.state[0];
   const coverFile: string = location.state[1];
+  useScrollToTop()
 
   return (
     <div className="w-full pt-14">
