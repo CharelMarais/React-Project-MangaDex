@@ -1,49 +1,54 @@
+import { useState } from "react";
 import { TbListSearch } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import "flowbite";
 import SearchManga from "./SearchManga";
 
 export function DropDownSelector() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <button
-        id="dropdownHoverButton"
-        data-dropdown-toggle="dropdownHover"
-        data-dropdown-trigger="hover"
-        className="inline-flex items-center rounded-lg px-4 py-0 text-center focus:outline-none "
+        className="inline-flex items-center rounded-lg px-4 py-0 text-center focus:outline-none"
         type="button"
         aria-label="menu-button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        aria-controls="dropdown-menu"
       >
         <TbListSearch className="h-full w-full px-2 pb-[1px] text-3xl font-bold text-amber-500" />
       </button>
 
       <div
-        id="dropdownHover"
-        className=" z-100 hidden w-44 divide-y divide-gray-100 rounded-b-lg border-x-2 border-b-2 border-amber-600 bg-stone-800 shadow"
+        id="dropdown-menu"
+        className={`absolute z-50 mt-2 right-0 top-10 w-44 divide-y divide-gray-100 rounded-bl-lg border-l-2 border-b-2 border-amber-600 bg-stone-800 shadow ${
+          isOpen ? "block" : "hidden"
+        }`}
       >
         <ul
-          className=" text-sm text-amber-500"
-          aria-labelledby="dropdownDefaultButton"
+          className="text-sm text-amber-500"
+          role="menu"
         >
           <li className="">
-            <SearchManga></SearchManga>
+            <SearchManga />
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
-            <Link to="mangalist/createdAt">New Release </Link>
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(!isOpen)}>
+            <Link to="mangalist/createdAt">New Release</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
-            <Link to="./mangalist/rating">Top Rated </Link>
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(!isOpen)}>
+            <Link to="./mangalist/rating">Top Rated</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
-            <Link to="./mangalist/followedCount">Most Popular </Link>
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(!isOpen)}>
+            <Link to="./mangalist/followedCount">Most Popular</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
-            <Link to="./mangalist/latestUploadedChapter">New Chapters</Link>
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(!isOpen)}>
+            <Link to="./mangalist/latestUploadedChapter">Latest</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(!isOpen)}>
             <Link to="./favourites/">Favourites</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600">
+          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(!isOpen)}>
             <Link to="./suspage/">Sus Page</Link>
           </li>
         </ul>
