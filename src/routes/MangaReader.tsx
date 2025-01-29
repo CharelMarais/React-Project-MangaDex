@@ -22,7 +22,6 @@ export function MangaReader() {
           return (
             <img
               key={chapter}
-              className="py-1"
               src={`https://uploads.mangadex.org/data-saver/${data.hash}/${chapter}`}
               alt=""
             />
