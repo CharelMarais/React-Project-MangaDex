@@ -19,16 +19,30 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
             {!data?.length ? (
               <p className="text-neutral-400">No English Translated Chapters</p>
             ) : (
-              data
-                ?.sort((a, b) => {
-                  return (
-                    (Number(a.attributes.chapter) ||
-                      Number(a.attributes.chapter.replaceAll(".", ""))) -
-                    (Number(b.attributes.chapter) ||
-                      Number(b.attributes.chapter.replaceAll(".", "")))
-                  );
-                })
-                .map((data) => {
+                Array.from(
+                  data
+                    ?.sort((a, b) => {
+                      const chapterA = parseFloat(a.attributes.chapter) || 0;
+                      const chapterB = parseFloat(b.attributes.chapter) || 0;
+                      
+                      const volumeA = a.attributes.volume ? parseFloat(a.attributes.volume) || 0 : 0;
+                      const volumeB = b.attributes.volume ? parseFloat(b.attributes.volume) || 0 : 0;
+                    
+                      const pagesA = a.attributes.pages;
+                      const pagesB = b.attributes.pages;
+                    
+                      return chapterA - chapterB || volumeA - volumeB || pagesA - pagesB;
+                    })
+                    .filter(data => data.attributes.pages > 0)
+                    .reduce((map, current) => {
+                      const key = `${current.attributes.chapter}-${current.attributes.volume || '0'}`;
+                      map.set(key, current);
+                      return map;
+                    }, new Map<string, IChapterData>())
+                    .values()
+                )?.map((data) => {
+                  console.log(data);
+                  
                   return (
                     <Link key={data.id} to={`../manga/chapter/${data.id}`}>
                       <div className="flex w-60 flex-shrink-0 cursor-pointer py-1 text-neutral-400 hover:bg-stone-700 ">
