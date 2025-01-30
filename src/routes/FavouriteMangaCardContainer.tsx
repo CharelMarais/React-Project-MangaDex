@@ -1,5 +1,6 @@
 import { MangaCard } from "../components/MangaCard";
 import { useMangaFavouriteStore } from "../store/zustore";
+import force from '../assets/img/force.png' 
 
 export function FavouriteMangaCardContainer() {
   const favouritedMangas = useMangaFavouriteStore().favouriteMangas;
@@ -38,7 +39,7 @@ export function FavouriteMangaCardContainer() {
             <p>We have many flavours to choose from</p>
             <img
               className="w-60"
-              src="/src/assets/img/force.png"
+              src={force}
               alt="ginu force"
             />
           </div>
