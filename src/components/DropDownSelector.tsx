@@ -33,7 +33,7 @@ export function DropDownSelector() {
     <>
       <button
         ref={buttonRef}
-        className="inline-flex items-center rounded-lg px-4 py-0 text-center focus:outline-none"
+        className="inline-flex items-center rounded-lg px-1 py-0 text-center focus:outline-none"
         type="button"
         aria-label="menu-button"
         onClick={() => setIsOpen(!isOpen)}
@@ -47,7 +47,7 @@ export function DropDownSelector() {
       <div
         ref={menuRef}
         id="dropdown-menu"
-        className={`absolute z-50 mt-2 right-0 top-10 w-44 divide-y divide-gray-100 rounded-bl-lg border-l-2 border-b-2 border-amber-600 bg-stone-800 shadow
+        className={`absolute z-50 mt-2 right-0 top-[42px] w-44 divide-y divide-gray-100 rounded-bl-lg border-l-2 border-b-2 border-amber-600 bg-stone-800 shadow
           transform transition-all duration-200 ease-out origin-top-right
           ${isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-50 opacity-0 pointer-events-none"}`}
       >
