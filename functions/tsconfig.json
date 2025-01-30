@@ -1,0 +1,21 @@
+// functions/tsconfig.json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*", "../../*"]
+    },
+    "types": ["node", "express", "qs"]
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*.ts", "../../typings/**/*.d.ts"],
+  "exclude": ["node_modules", ".eslintrc.js"]
+}

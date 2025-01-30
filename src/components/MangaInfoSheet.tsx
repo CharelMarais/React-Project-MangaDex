@@ -3,6 +3,18 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMangaInfoProp } from "../props/mangaProps";
 import { useMangaFavouriteStore } from "../store/zustore";
 
+const getProxiedImageUrl = (mangaId: string, filename: string): string => {
+  const imagePath = `https://uploads.mangadex.org/covers/${mangaId}/${filename}.512.jpg`;
+  
+  if (import.meta.env.DEV) {
+    const encodedUrl = encodeURIComponent(imagePath);
+    return `http://localhost:5001/kame-house-manga/us-central1/imageProxy?url=${encodedUrl}`;
+  }
+
+  const encodedUrl = encodeURIComponent(imagePath);
+  return `https://kame-house-manga.web.app/image?url=${encodedUrl}`;
+};
+
 export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [expandDescription, setExpandDescription] = useState(false);
   const isFavorited = useRef(false);
@@ -40,7 +52,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
     <div className=" m-6 flex flex-col overflow-hidden rounded-3xl bg-stone-800 sm:items-center md:flex-row md:items-start md:justify-start">
       <img
         className={` h-fit w-full sm:mt-6 sm:w-96 sm:rounded-lg  md:m-0 md:rounded-none`}
-        src={`https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg`}
+        src={getProxiedImageUrl(mangaData.id, coverFile)}
       ></img>
 
       <div className="flex w-full flex-col p-6 pt-4 text-neutral-300 ">

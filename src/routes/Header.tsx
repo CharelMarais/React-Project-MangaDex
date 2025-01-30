@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { DropDownSelector } from "../components/DropDownSelector";
+import logo from '../assets/img/logo.png' 
 
 export function Header() {
   return (
@@ -8,7 +9,7 @@ export function Header() {
         <Link to="/">
           <img
             className="m-0  w-12 p-1 "
-            src="/src/assets/img/logo.png"
+            src={logo}
             alt="logo"
           />
         </Link>

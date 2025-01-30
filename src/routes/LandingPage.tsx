@@ -1,4 +1,5 @@
 import "animate.css";
+import roshiImage from '../assets/img/roshi.png' 
 
 export function LandingPage() {
   return (
@@ -18,7 +19,7 @@ export function LandingPage() {
       </p>
       <img
         className="aspect-auto w-full max-w-md"
-        src="src/assets/img/roshi.png"
+        src={roshiImage}
         alt="master roshi"
       />
     </div>

@@ -1,7 +1,20 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  base: '/',
+  publicDir: 'public',
+  build: {
+    outDir: 'public',
+    assetsDir: 'assets'
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5001/kame-house-manga/us-central1/mangaProxy',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false
+      }
+    }
+  }
 })

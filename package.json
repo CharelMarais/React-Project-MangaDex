@@ -11,6 +11,9 @@
   "dependencies": {
     "@tanstack/react-query": "^4.26.1",
     "animate.css": "^4.1.1",
+    "axios": "^1.7.9",
+    "firebase": "^11.2.0",
+    "firebase-functions": "^6.3.0",
     "flowbite": "^1.6.4",
     "formik": "^2.2.9",
     "localforage": "^1.10.0",
