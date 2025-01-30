@@ -23,6 +23,7 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.8.2",
     "react-transition-group": "^4.4.5",
+    "zukeeper": "^1.0.2",
     "zustand": "^4.3.6"
   },
   "devDependencies": {
