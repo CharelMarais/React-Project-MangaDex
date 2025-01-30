@@ -41,8 +41,6 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
                     }, new Map<string, IChapterData>())
                     .values()
                 )?.map((data) => {
-                  console.log(data);
-                  
                   return (
                     <Link key={data.id} to={`../manga/chapter/${data.id}`}>
                       <div className="flex w-60 flex-shrink-0 cursor-pointer py-1 text-neutral-400 hover:bg-stone-700 ">

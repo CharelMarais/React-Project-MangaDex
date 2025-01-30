@@ -5,12 +5,24 @@ import Loading from "../components/Loading";
 import { IChapter } from "../models/chapter";
 import { getChapterImagesById } from "../services/apicalls";
 
+const getProxiedImageUrl = (hash: string, chapter: string): string => {
+  const imagePath = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
+  
+  if (import.meta.env.DEV) {
+    const encodedUrl = encodeURIComponent(imagePath);
+    return `http://localhost:5001/kame-house-manga/us-central1/imageProxy?url=${encodedUrl}`;
+  }
+
+  const encodedUrl = encodeURIComponent(imagePath);
+  return `https://kame-house-manga.web.app/image?url=${encodedUrl}`;
+};
+
 export function MangaReader() {
   const { chapterId } = useParams();
 
   const { data, isLoading, isSuccess, isError } = useQuery<IChapter, Error>(
     [`coverImageQuery`, chapterId],
-    () => getChapterImagesById(chapterId)
+    () => getChapterImagesById(chapterId as string)
   );
 
   return (
@@ -22,7 +34,7 @@ export function MangaReader() {
           return (
             <img
               key={chapter}
-              src={`https://uploads.mangadex.org/data-saver/${data.hash}/${chapter}`}
+              src={getProxiedImageUrl(data.hash, chapter)}
               alt=""
             />
           );

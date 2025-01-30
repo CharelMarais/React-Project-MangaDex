@@ -1,4 +1,6 @@
 import "animate.css";
+import gokuImage from '../assets/img/goku.png' 
+import auraImage from '../assets/img/aura.png' 
 
 function Loading() {
   return (
@@ -6,13 +8,13 @@ function Loading() {
       <div className=" grid h-44 w-44 content-center justify-center ">
         <img
           className="animate__animated animate__infinite	animate__pulse pulse col-start-1 row-start-1"
-          src="/src/assets/img/aura.png"
+          src={auraImage}
           alt="aura"
         />
         <img
           className=" relative top-16 right-1 col-start-1 row-start-1"
-          src="/src/assets/img/goku.png"
-          alt="aura"
+          src={gokuImage}
+          alt="goku"
         />
       </div>
     </div>

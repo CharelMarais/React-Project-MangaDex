@@ -6,6 +6,18 @@ import { Link } from "react-router-dom";
 import { ErrorComponent } from "./ErrorComponent";
 import Loading from "./Loading";
 
+const getProxiedImageUrl = (mangaId: string, filename: string): string => {
+  const imagePath = `https://uploads.mangadex.org/covers/${mangaId}/${filename}.512.jpg`;
+  
+  if (import.meta.env.DEV) {
+    const encodedUrl = encodeURIComponent(imagePath);
+    return `http://localhost:5001/kame-house-manga/us-central1/imageProxy?url=${encodedUrl}`;
+  }
+
+  const encodedUrl = encodeURIComponent(imagePath);
+  return `https://kame-house-manga.web.app/image?url=${encodedUrl}`;
+};
+
 export function MangaCard(props: IMangaCardProp) {
   const { managId, coverId, title, contentRating, mangaData } = props;
 
@@ -26,7 +38,7 @@ export function MangaCard(props: IMangaCardProp) {
           <div
             className={`m-1 flex h-72 w-52 flex-col-reverse overflow-hidden rounded-lg border-2 border-stone-900 bg-cover bg-center bg-no-repeat shadow-inner shadow-amber-500 duration-300 ease-in-out hover:border-amber-500`}
             style={{
-              backgroundImage: `url('https://uploads.mangadex.org/covers/${managId}/${data?.attributes.fileName}.512.jpg')`,
+              backgroundImage: `url(${getProxiedImageUrl(managId, data?.attributes.fileName)})`,
             }}
           >
             <div className="flex h-2/3 w-full flex-col justify-end bg-gradient-to-t from-black text-white ">
