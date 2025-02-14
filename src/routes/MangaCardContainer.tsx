@@ -5,6 +5,7 @@ import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
 import { ErrorComponent } from "../components/ErrorComponent";
 import Loading from "../components/Loading";
+import { log } from "firebase-functions/logger";
 
 export function MangaCardContainer() {
   const { orderType } = useParams();
@@ -65,7 +66,7 @@ export function MangaCardContainer() {
 
           {data?.map((mangaData) => {
             return (
-              <MangaCard
+              mangaData.attributes.availableTranslatedLanguages.find(lang => lang === 'en') && <MangaCard
                 key={mangaData.id}
                 mangaData={mangaData}
                 managId={mangaData.id}

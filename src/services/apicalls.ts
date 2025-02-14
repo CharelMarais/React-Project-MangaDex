@@ -63,8 +63,7 @@ export async function getManga(listOrder: string = "createdAt"): Promise<IMangaD
   const data = await mangaFetch("manga", {
     order: { [listOrder]: "desc" },
     limit: 20,
-    includes: ["cover_art"],
-    contentRating: ["safe"]
+    includes: ["cover_art"]
   });
   return data.data;
 }
@@ -75,8 +74,7 @@ export async function getMangaSearchResults(
   const data = await mangaFetch("manga", {
     title: searchValue,
     limit: 20,
-    includes: ["cover_art"],
-    contentRating: ["safe"]
+    includes: ["cover_art"]
   });
   return data.data;
 }

@@ -9,13 +9,10 @@ export function Header() {
   const navigate = useNavigate();
   const isHomePage = useMatch("/");
   const isChapterPage = useMatch("/manga/chapter/:chapterId");
+  const isMangaPage = useMatch("/manga/:mangaId");
   const { currentMangaId, currentMangaData, coverFile } = useCurrentChapter();
 
   const handleBack = () => {
-    console.log(isChapterPage);
-    console.log(currentMangaId);
-    console.log(currentMangaData);
-    console.log(coverFile);
     
     if (isChapterPage && currentMangaId && currentMangaData && coverFile) {
       navigate(`/manga/${currentMangaId}`, { state: [currentMangaData, coverFile] });

@@ -1,0 +1,26 @@
+{
+    "name": "Kame House Manga Reader",
+    "short_name": "MangaDex",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f59e0b",
+    "theme_color": "#f59e0b",
+    "icons": [
+      {
+        "src": "/pwa-192.png",
+        "sizes": "192x192",
+        "type": "icons/png"
+      },
+      {
+        "src": "/pwa-512.png",
+        "sizes": "512x512",
+        "type": "icons/png"
+      },
+      {
+        "src": "/pwa-maskable.png",
+        "sizes": "512x512",
+        "type": "icons/png",
+        "purpose": "maskable"
+      }
+    ]
+  }

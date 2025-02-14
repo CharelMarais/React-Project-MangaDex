@@ -17,7 +17,6 @@ export const mangaProxy = functions.https.onRequest((req: Request, res: Response
         ...req.query,
         ...(path === "manga" && {
           "includes[]": "cover_art",
-          "contentRating[]": "safe",
         }),
       };
 
