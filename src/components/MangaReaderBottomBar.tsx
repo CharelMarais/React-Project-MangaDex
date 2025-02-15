@@ -27,29 +27,29 @@ export function MangaReaderBottomBar() {
 
     return (
         <div
-            className={`bg-stone-800/80 fixed flex flex-col p-3 pb-1 rounded-t-2xl transition-all duration-200 ease-out ${
+            className={`bg-accents/90 fixed flex flex-col p-3 pb-1 rounded-t-2xl transition-all duration-200 ease-out ${
                 isOpen ? "bottom-0" : "-bottom-[65px]"
             }`}
         >
             <div
-                className="absolute h-8 bg-stone-800/80 rounded-t-full w-14 -top-8 left-1/2 -ml-7 flex justify-center items-center cursor-pointer"
+                className="absolute h-8 bg-accents/90 rounded-t-full w-14 -top-8 left-1/2 -ml-7 flex justify-center items-center cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <FaChevronDown
-                    className={`text-amber-500 h-10 w-5 -mb-1 transform transition-all duration-200 ease-out ${
+                    className={`text-primary h-10 w-5 -mb-1 transform transition-all duration-200 ease-out ${
                         isOpen ? "rotate-0" : "rotate-180"
                     }`}
                 />
             </div>
             <AutoScrollSlider />
-            <div className="navigation-buttons flex w-64 justify-between">
+            <div className="navigation-buttons flex w-64 justify-between font-semibold">
                 <button onClick={handlePrevChapter} className="block w-full">
-                    <div className="flex cursor-pointer py-1 text-amber-500">
+                    <div className="flex cursor-pointer py-1 text-primary">
                         <p className="w-full">Prev</p>
                     </div>
                 </button>
                 <button onClick={handleNextChapter} className="block w-full">
-                    <div className="flex cursor-pointer py-1  text-amber-500">
+                    <div className="flex cursor-pointer py-1  text-primary">
                         <p className="w-full">Next</p>
                     </div>
                 </button>

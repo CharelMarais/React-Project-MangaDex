@@ -11,8 +11,7 @@ const getProxiedImageUrl = (hash: string, chapter: string): string => {
   const imagePath = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
   
   if (import.meta.env.DEV) {
-    const encodedUrl = encodeURIComponent(imagePath);
-    return `http://localhost:5001/kame-house-manga/us-central1/imageProxy?url=${encodedUrl}`;
+    return imagePath;
   }
 
   const encodedUrl = encodeURIComponent(imagePath);

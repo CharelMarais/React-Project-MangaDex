@@ -60,7 +60,7 @@ export function MangaCardContainer() {
       {isLoading && <Loading />}
       {isSuccess && (
         <div className="flex flex-wrap justify-center gap-2">
-          <h2 className="w-full pl-4 text-lg font-semibold uppercase italic text-amber-500 ">
+          <h2 className="w-full pl-4 text-lg font-semibold uppercase italic text-primary ">
             {currentPage || `Results: ${searchValue}`}
           </h2>
 

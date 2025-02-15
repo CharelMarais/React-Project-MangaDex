@@ -23,18 +23,18 @@ export function Header() {
 
   return (
     <>
-      <div className="fixed mb-2 flex w-full border-b-2 border-b-amber-600 bg-stone-800 h-[52px] justify-between">
+      <div className="fixed mb-2 flex w-full border-b-2 border-primary bg-accents h-[52px] justify-between shadow-md shadow-primary-accent z-10">
         {!isHomePage && (
           <button
             onClick={handleBack}
             className={`transform transition-all duration-300 ease-out ${
               isHomePage 
                 ? "opacity-0 translate-x-[-20px] cursor-default" 
-                : "opacity-100 translate-x-0 hover:text-amber-400"
+                : "opacity-100 translate-x-0 hover:text-primary-accent"
             }`}
             aria-label="Go back"
           >
-            <IoIosArrowRoundBack className="h-full w-12 pb-[1px] text-3xl font-bold text-amber-500" />
+            <IoIosArrowRoundBack className="h-full w-12 pb-[1px] text-3xl font-bold text-primary" />
           </button>
         )}
         {isHomePage && (
@@ -54,7 +54,7 @@ export function Header() {
         </Link>
 
         {isHomePage && (
-          <h1 className={`transform transition-all duration-500 ease-out origin-left flex items-center font-mono text-3xl font-bold uppercase text-amber-500 antialiased justify-start${
+          <h1 className={`transform transition-all duration-500 ease-out origin-left flex items-center font-mono text-3xl font-bold uppercase text-primary antialiased justify-start${
             isHomePage 
               ? "scale-100 opacity-100" 
               : "scale-50 opacity-0"

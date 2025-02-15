@@ -8,7 +8,7 @@ export function FavouriteMangaCardContainer() {
   return (
     <div className="h-full w-full pt-16">
       <div className="flex h-full w-full flex-col flex-wrap gap-2">
-        <h2 className="w-fit pl-4 text-lg font-semibold uppercase italic text-amber-500 ">
+        <h2 className="w-fit pl-4 text-lg font-semibold uppercase italic text-primary ">
           Favourites
         </h2>
         {favouritedMangas.length ? (
@@ -34,7 +34,7 @@ export function FavouriteMangaCardContainer() {
             })}
           </div>
         ) : (
-          <div className="m-auto flex h-fit flex-col items-center text-neutral-200 ">
+          <div className="m-auto flex h-fit flex-col items-center text-text ">
             <p>No favourites saved... yet!!!</p>
             <p>We have many flavours to choose from</p>
             <img

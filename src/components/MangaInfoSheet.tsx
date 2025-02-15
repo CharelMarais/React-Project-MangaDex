@@ -7,8 +7,7 @@ const getProxiedImageUrl = (mangaId: string, filename: string): string => {
   const imagePath = `https://uploads.mangadex.org/covers/${mangaId}/${filename}.512.jpg`;
   
   if (import.meta.env.DEV) {
-    const encodedUrl = encodeURIComponent(imagePath);
-    return `http://localhost:5001/kame-house-manga/us-central1/imageProxy?url=${encodedUrl}`;
+    return imagePath;
   }
 
   const encodedUrl = encodeURIComponent(imagePath);
@@ -49,7 +48,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const toggleDescription = () => setExpandDescription(!expandDescription);
 
   return (
-    <div className=" m-6 flex flex-col overflow-hidden rounded-3xl bg-stone-800 sm:items-center md:flex-row md:items-start md:justify-start">
+    <div className=" m-6 flex flex-col overflow-hidden rounded-3xl bg-secondary-gradient sm:items-center md:flex-row md:items-start md:justify-start shadow-md shadow-secondary">
       <img
         className={` h-fit w-full sm:mt-6 sm:w-96 sm:rounded-lg  md:m-0 md:rounded-none`}
         src={getProxiedImageUrl(mangaData.id, coverFile)}
@@ -57,7 +56,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
 
       <div className="flex w-full flex-col p-6 pt-4 text-neutral-300 ">
         <div className="flex justify-between">
-          <h2 className="mb-2 w-full text-lg font-semibold uppercase italic text-amber-500">
+          <h2 className="mb-2 w-full text-lg font-semibold uppercase italic text-primary">
             {mangaData?.attributes?.title?.en ||
               mangaData?.attributes?.title?.["ja-ro"]}
           </h2>
@@ -84,7 +83,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
           className={
             expandDescription
               ? `h-fit min-h-[5rem] w-full cursor-pointer transition-all duration-500`
-              : `h-20 min-h-[5rem] w-full  cursor-pointer overflow-hidden bg-gradient-to-t from-stone-800 via-neutral-200 to-neutral-200 bg-clip-text  text-transparent transition-all duration-500`
+              : `h-20 min-h-[5rem] w-full  cursor-pointer overflow-hidden bg-gradient-to-t from-accents via-text to-text bg-clip-text  text-transparent transition-all duration-500`
           }
         >
           <p className="">

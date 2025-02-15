@@ -10,8 +10,7 @@ const getProxiedImageUrl = (mangaId: string, filename: string): string => {
   const imagePath = `https://uploads.mangadex.org/covers/${mangaId}/${filename}.512.jpg`;
   
   if (import.meta.env.DEV) {
-    const encodedUrl = encodeURIComponent(imagePath);
-    return `http://localhost:5001/kame-house-manga/us-central1/imageProxy?url=${encodedUrl}`;
+    return imagePath;
   }
 
   const encodedUrl = encodeURIComponent(imagePath);
@@ -36,7 +35,7 @@ export function MangaCard(props: IMangaCardProp) {
           state={[mangaData, data?.attributes.fileName]}
         >
           <div
-            className={`m-1 flex h-72 w-52 flex-col-reverse overflow-hidden rounded-lg border-2 border-stone-900 bg-cover bg-center bg-no-repeat shadow-inner shadow-amber-500 duration-300 ease-in-out hover:border-amber-500`}
+            className={`m-1 flex h-72 w-52 flex-col-reverse overflow-hidden rounded-lg border-2 border-secondary bg-cover bg-center bg-no-repeat shadow-inner shadow-primary duration-300 ease-in-out hover:border-primary`}
             style={{
               backgroundImage: `url(${getProxiedImageUrl(managId, data?.attributes.fileName)})`,
             }}
