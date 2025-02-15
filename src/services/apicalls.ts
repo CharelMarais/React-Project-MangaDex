@@ -5,7 +5,7 @@ import { IMangaData } from "../models/manga";
 
 const API_BASE = import.meta.env.PROD 
   ? 'https://us-central1-kame-house-manga.cloudfunctions.net/mangaProxy/api'
-  : 'http://localhost:5001/kame-house-manga/us-central1/mangaProxy/api';
+  : 'https://api.mangadex.org';
 
 interface MangaFetchParams {
   [key: string]: string | number | boolean | string[] | Record<string, string>;

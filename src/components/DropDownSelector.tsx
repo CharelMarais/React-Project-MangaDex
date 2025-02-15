@@ -41,17 +41,17 @@ export function DropDownSelector() {
         aria-haspopup="true"
         aria-controls="dropdown-menu"
       >
-        <TbListSearch className="h-full w-full px-2 pb-[1px] text-3xl font-bold text-amber-500" />
+        <TbListSearch className="h-full w-full px-2 pb-[1px] text-3xl font-bold text-primary" />
       </button>
 
       <div
         ref={menuRef}
         id="dropdown-menu"
-        className={`absolute z-50 mt-2 right-0 top-[42px] w-44 divide-y divide-gray-100 rounded-bl-lg border-l-2 border-b-2 border-amber-600 bg-stone-800 shadow
+        className={`absolute z-50 mt-2 right-0 top-[42px] w-44 divide-y divide-gray-100 rounded-bl-lg border-l-2 border-b-2 border-primary bg-accents shadow-md shadow-primary-accent
           transform transition-all duration-200 ease-out origin-top-right
           ${isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-50 opacity-0 pointer-events-none"}`}
       >
-        <ul className="text-sm text-amber-500" role="menu">
+        <ul className="text-sm text-primary" role="menu">
           <li className="">
             <SearchManga />
           </li>

@@ -65,7 +65,7 @@ const AutoScrollSlider = () => {
         max="70"
         value={sliderValue}
         onChange={handleSpeedChange}
-        className="w-64 accent-amber-500 transition-transform duration-200 hover:scale-105"
+        className="w-64 accent-primary transition-transform duration-200 hover:scale-105"
         aria-label="Scroll speed control"
       />
   );

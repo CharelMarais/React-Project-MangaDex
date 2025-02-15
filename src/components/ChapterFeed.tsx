@@ -25,8 +25,8 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
   }, [data, isSuccess, mangaId, setChapterList]);
 
   return (
-    <div className="m-6 flex flex-col overflow-hidden rounded-3xl bg-stone-800 p-6 z-0">
-      <h1 className="pb-4 text-amber-500">Available Chapters</h1>
+    <div className="m-6 flex flex-col overflow-hidden rounded-3xl bg-[rgba(0, 180, 216, 0.4)] p-6 z-0">
+      <h1 className="pb-4 text-primary">Available Chapters</h1>
       <div className="flex flex-col justify-center sm:flex-row sm:flex-wrap">
         {processedChapters.length === 0 ? (
           <p className="text-neutral-400">No English Translated Chapters</p>
