@@ -3,7 +3,7 @@
   <head>
     <!-- PWA Meta -->
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#f59e0b" />
+    <meta name="theme-color" content="#1A2E40" />
 
     <!-- iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@
     <title>Kame House</title>
   </head>
   <body class="m-0 flex h-[100dvh] w-full flex-grow bg-fixed bg-gradient-twilight overflow-hidden">
-    <div id="root" class="flex overflow-auto w-full"></div>
+    <div id="root" class="flex overflow-auto w-full h-full touch-pan-y overscroll-contain"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

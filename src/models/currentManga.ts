@@ -13,4 +13,5 @@ export interface IChapterStore {
   goToNextChapter: () => IChapterData | null;
   goToPreviousChapter: () => IChapterData | null;
   getCurrentChapter: () => IChapterData | null;
+  hasPreviousChapter: () => boolean;
 }

@@ -51,6 +51,10 @@ registerRoute(
   })
 );
 
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
+});
+
 // Versioning with proper event type
 self.addEventListener('activate', (event: ExtendableEvent) => {
   event.waitUntil(

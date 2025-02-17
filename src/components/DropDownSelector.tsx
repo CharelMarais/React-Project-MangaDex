@@ -7,6 +7,32 @@ export function DropDownSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showInstallButton, setShowInstallButton] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallButton(true);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      await deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response: ${outcome}`);
+      setDeferredPrompt(null);
+      setShowInstallButton(false);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -73,6 +99,11 @@ export function DropDownSelector() {
           <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
             <Link to="./suspage/">Sus Page</Link>
           </li>
+          {showInstallButton && (
+            <li  className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={handleInstallClick}>
+              Download App
+            </li>
+          )}
         </ul>
       </div>
     </>

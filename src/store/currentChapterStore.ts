@@ -66,7 +66,12 @@ export const useCurrentChapter = create<IChapterStore>()(
       getCurrentChapter: () => {
         const { chapters, currentChapterIndex } = get();
         return currentChapterIndex >= 0 ? chapters[currentChapterIndex] : null;
-      }
+      },
+      
+      hasPreviousChapter: () => {
+        const { currentChapterIndex } = get();
+        return currentChapterIndex > 0;
+      },
     }),
     {
       name: "currentChapterStorage",

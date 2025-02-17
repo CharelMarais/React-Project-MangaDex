@@ -9,6 +9,9 @@ export function MangaReaderBottomBar() {
     const navigate = useNavigate();
     const chapterStore = useCurrentChapter();
 
+    // Check if previous chapter exists
+    const hasPreviousChapter = chapterStore.hasPreviousChapter();
+
     const handleNextChapter = (e: React.MouseEvent) => {
         e.preventDefault();
         const nextChapter = chapterStore.goToNextChapter();
@@ -43,13 +46,21 @@ export function MangaReaderBottomBar() {
             </div>
             <AutoScrollSlider />
             <div className="navigation-buttons flex w-64 justify-between font-semibold">
-                <button onClick={handlePrevChapter} className="block w-full">
-                    <div className="flex cursor-pointer py-1 text-primary">
+                <button 
+                    onClick={handlePrevChapter} 
+                    className="block w-full"
+                    disabled={!hasPreviousChapter}
+                >
+                    <div className={`flex py-1 ${
+                        hasPreviousChapter 
+                            ? "text-primary cursor-pointer" 
+                            : "text-gray-500 cursor-not-allowed"
+                    }`}>
                         <p className="w-full">Prev</p>
                     </div>
                 </button>
                 <button onClick={handleNextChapter} className="block w-full">
-                    <div className="flex cursor-pointer py-1  text-primary">
+                    <div className="flex cursor-pointer py-1 text-primary">
                         <p className="w-full">Next</p>
                     </div>
                 </button>

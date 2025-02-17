@@ -5,24 +5,38 @@ const AutoScrollSlider = () => {
   const scrollSpeed = useRef(0);
   const animationFrameId = useRef<number>();
   const lastTime = useRef<number>(Date.now());
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const findScrollContainer = () => {
+      const container = document.getElementById('root') as HTMLDivElement | null;
+      if (container) {
+        scrollContainerRef.current = container;
+      } else {
+        requestAnimationFrame(findScrollContainer);
+      }
+    };
+    findScrollContainer();
+  }, []);
 
   const autoScroll = useCallback(() => {
+    if (!scrollContainerRef.current) return;
     const now = Date.now();
     const deltaTime = now - lastTime.current;
     lastTime.current = now;
+    const container = scrollContainerRef.current;
 
-    if (Math.abs(scrollSpeed.current) > 0) {
+    if (container && Math.abs(scrollSpeed.current) > 0) {
       const direction = Math.sign(scrollSpeed.current);
       const pixelsPerSecond = Math.abs(scrollSpeed.current) * 100;
       const scrollStep = (pixelsPerSecond * deltaTime) / 1000;
 
-      window.scrollBy({
-        top: scrollStep * direction,
-        behavior: 'auto'
-      });
+      // Scroll the container instead of window
+      container.scrollTop += scrollStep * direction;
 
-      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
-      const isAtTop = window.scrollY === 0;
+      // Check container scroll boundaries
+      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
+      const isAtTop = container.scrollTop === 0;
 
       if ((direction === 1 && isAtBottom) || (direction === -1 && isAtTop)) {
         scrollSpeed.current = 0;

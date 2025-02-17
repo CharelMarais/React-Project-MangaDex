@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DropDownSelector } from "../components/DropDownSelector";
 import logo from '../assets/img/logo.png';
 import { useMatch } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { useCurrentChapter } from "../store/currentChapterStore";
 import { useNavigationHistory } from "../services/historyHook";
 
 export function Header() {

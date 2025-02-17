@@ -3,8 +3,12 @@ export function registerSW() {
     navigator.serviceWorker.register('/sw.js', {
       scope: '/',
       type: 'module'
-    }).then(registration => {
-      console.log('SW registered:', registration)
-    })
+    }).then(() => {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        registrations.forEach(registration => {
+          registration.update();
+        });
+      });
+    });
   }
 }
