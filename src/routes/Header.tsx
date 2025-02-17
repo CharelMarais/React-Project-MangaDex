@@ -4,22 +4,11 @@ import logo from '../assets/img/logo.png';
 import { useMatch } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useCurrentChapter } from "../store/currentChapterStore";
+import { useNavigationHistory } from "../services/historyHook";
 
 export function Header() {
-  const navigate = useNavigate();
+  const { handleBack, canGoBack } = useNavigationHistory();
   const isHomePage = useMatch("/");
-  const isChapterPage = useMatch("/manga/chapter/:chapterId");
-  const isMangaPage = useMatch("/manga/:mangaId");
-  const { currentMangaId, currentMangaData, coverFile } = useCurrentChapter();
-
-  const handleBack = () => {
-    
-    if (isChapterPage && currentMangaId && currentMangaData && coverFile) {
-      navigate(`/manga/${currentMangaId}`, { state: [currentMangaData, coverFile] });
-    } else {
-      navigate(-1);
-    }
-  };
 
   return (
     <>
