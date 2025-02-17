@@ -81,26 +81,26 @@ export function DropDownSelector() {
           <li className="">
             <SearchManga />
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
-            <Link to="mangalist/createdAt">New Release</Link>
+          <li className="rounded text-lg hover:bg-secondary/40" onClick={() => setIsOpen(false)}>
+            <Link className="block h-full w-full px-4 py-1" to="mangalist/createdAt">New Release</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
-            <Link to="./mangalist/rating">Top Rated</Link>
+          <li className="rounded text-lg hover:bg-secondary/40" onClick={() => setIsOpen(false)}>
+            <Link className="block h-full w-full px-4 py-1" to="./mangalist/rating">Top Rated</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
-            <Link to="./mangalist/followedCount">Most Popular</Link>
+          <li className="rounded text-lg hover:bg-secondary/40" onClick={() => setIsOpen(false)}>
+            <Link className="block h-full w-full px-4 py-1" to="./mangalist/followedCount">Most Popular</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
-            <Link to="./mangalist/latestUploadedChapter">Latest</Link>
+          <li className="rounded text-lg hover:bg-secondary/40" onClick={() => setIsOpen(false)}>
+            <Link className="block h-full w-full px-4 py-1" to="./mangalist/latestUploadedChapter">Latest</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
-            <Link to="./favourites/">Favourites</Link>
+          <li className="rounded text-lg hover:bg-secondary/40" onClick={() => setIsOpen(false)}>
+            <Link className="block h-full w-full px-4 py-1" to="./favourites/">Favourites</Link>
           </li>
-          <li className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={() => setIsOpen(false)}>
-            <Link to="./suspage/">Sus Page</Link>
+          <li className="rounded text-lg hover:bg-secondary/40" onClick={() => setIsOpen(false)}>
+            <Link className="block h-full w-full px-4 py-1" to="./suspage/">Sus Page</Link>
           </li>
           {showInstallButton && (
-            <li  className="m-2 rounded px-2 py-1 text-lg hover:bg-stone-600" onClick={handleInstallClick}>
+            <li  className="rounded px-4 py-1 text-lg hover:bg-secondary/40" onClick={handleInstallClick}>
               Download App
             </li>
           )}

@@ -38,8 +38,8 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
                 onClick={() => setCurrentChapter(chapter.id)}
                 className="block"
               >
-                <div className="flex w-60 flex-shrink-0 cursor-pointer py-1 text-neutral-400 hover:bg-stone-700">
-                  <p className="w-full">
+                <div className="flex w-60 flex-shrink-0 cursor-pointer text-neutral-400">
+                  <p className="rounded-full hover:bg-secondary/40 py-1 px-2">
                     Chapter: {chapter.attributes.chapter} {" "} 
                     Pages: {chapter.attributes.pages}
                   </p>
