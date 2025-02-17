@@ -2,6 +2,7 @@ import "animate.css";
 import roshiImage from '../assets/img/roshi.png' 
 
 export function LandingPage() {
+  
   return (
     <div className="m-auto flex h-full flex-grow flex-col items-center justify-center px-6 pt-14 text-center text-text">
       <p className="flex flex-col items-center pt-2 text-center text-4xl font-semibold sm:text-5xl">
