@@ -34,7 +34,7 @@ export const useNavigationHistory = () => {
 
   const handleBack = () => {
     if (historyRef.current.length > 1) {
-      const previousEntry = historyRef.current[historyRef.current.length - 2];
+      const previousEntry = location.pathname.includes('chapter') ? historyRef.current[historyRef.current.length - 1] : historyRef.current[historyRef.current.length - 2];
       navigate(previousEntry.path, {
         state: previousEntry.state 
       });

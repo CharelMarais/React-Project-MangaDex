@@ -5,7 +5,7 @@ import { IoMdSearch } from "react-icons/io";
 export default function SearchManga() {
   const navigate = useNavigate();
   return (
-    <div className="m-4 flex h-6 w-fit items-center justify-center overflow-hidden rounded-md bg-neutral-100">
+    <div className="m-2 flex h-6 w-fit items-center justify-center overflow-hidden rounded-md bg-neutral-100">
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(value, { resetForm }) => {
