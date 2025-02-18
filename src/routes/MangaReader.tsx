@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { ErrorComponent } from "../components/ErrorComponent";
 import Loading from "../components/Loading";
 import { IChapter } from "../models/chapter";
 import { getChapterImagesById } from "../services/apicalls";
 import { MangaReaderBottomBar } from "../components/MangaReaderBottomBar";
 import { useScrollToTop } from "../services/scrollToTop";
+import { useLastReadStore } from "../store/lastReadChapter";
+import { useEffect } from "react";
 
 const getProxiedImageUrl = (hash: string, chapter: string): string => {
   const imagePath = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
@@ -21,11 +23,21 @@ const getProxiedImageUrl = (hash: string, chapter: string): string => {
 export function MangaReader() {
   useScrollToTop()
   const { chapterId } = useParams();
+  const location = useLocation();
+  const { mangaId } = location.state || {};
+  
+  const { setLastReadChapterPerManga } = useLastReadStore();
 
   const { data, isLoading, isSuccess, isError } = useQuery<IChapter, Error>(
     [`coverImageQuery`, chapterId],
     () => getChapterImagesById(chapterId as string)
   );
+
+  useEffect(() => {
+    if (isSuccess && mangaId && chapterId) {
+      setLastReadChapterPerManga(mangaId, chapterId);
+    }
+  }, [isSuccess, mangaId, chapterId, setLastReadChapterPerManga]);
   
 
   return (

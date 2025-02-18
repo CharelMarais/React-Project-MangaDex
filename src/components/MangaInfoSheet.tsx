@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMangaInfoProp } from "../props/mangaProps";
 import { useMangaFavouriteStore } from "../store/zustore";
+import { ContinueReadingButton } from "./ContinueReadingCurrentManga";
+import { useLastReadStore } from "../store/lastReadChapter";
 
 const getProxiedImageUrl = (mangaId: string, filename: string): string => {
   const imagePath = `https://uploads.mangadex.org/covers/${mangaId}/${filename}.512.jpg`;
@@ -18,6 +20,8 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [expandDescription, setExpandDescription] = useState(false);
   const isFavorited = useRef(false);
   const favoritedMangas = useMangaFavouriteStore();
+  const { lastReadChapters } = useLastReadStore();
+  const lastChapterId = lastReadChapters[mangaData.id];
 
   if (favoritedMangas.favouriteMangas.includes(mangaData)) {
     isFavorited.current = true;
@@ -48,13 +52,12 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const toggleDescription = () => setExpandDescription(!expandDescription);
 
   return (
-    <div className=" m-6 flex flex-col overflow-hidden rounded-3xl bg-secondary-gradient sm:items-center md:flex-row md:items-start md:justify-start shadow-md shadow-secondary">
+    <div className="relative m-6 flex flex-col overflow-hidden rounded-3xl bg-secondary-gradient sm:items-center md:flex-row md:items-start md:justify-start shadow-md shadow-secondary">
       <img
         className={` h-fit w-full sm:mt-6 sm:w-96 sm:rounded-lg  md:m-0 md:rounded-none`}
         src={getProxiedImageUrl(mangaData.id, coverFile)}
       ></img>
-
-      <div className="flex w-full flex-col p-6 pt-4 text-neutral-300 ">
+      <div className="flex w-full flex-col p-6 pt-4 text-neutral-300 flex-grow">
         <div className="flex justify-between">
           <h2 className="mb-2 w-full text-lg font-semibold uppercase italic text-primary">
             {mangaData?.attributes?.title?.en ||
@@ -122,6 +125,11 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
             {mangaData.attributes.state}
           </span>
         </p>
+        <div className={`m-2 ${lastChapterId ?? "hidden"}`}>
+          <div className={`absolute bottom-1 right-1 text-sm`}>
+            <ContinueReadingButton mangaId={mangaData.id} />
+          </div>
+        </div>
       </div>
     </div>
   );

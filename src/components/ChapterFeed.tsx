@@ -34,7 +34,7 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
           processedChapters.map((chapter) => (
             <div key={chapter.id} className="group relative">
               <Link
-                to={`../manga/chapter/${chapter.id}`}
+                to={`../manga/chapter/${chapter.id}`} state={{ mangaId }}
                 onClick={() => setCurrentChapter(chapter.id)}
                 className="block"
               >

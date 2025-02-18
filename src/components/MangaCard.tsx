@@ -18,7 +18,7 @@ const getProxiedImageUrl = (mangaId: string, filename: string): string => {
 };
 
 export function MangaCard(props: IMangaCardProp) {
-  const { managId, coverId, title, contentRating, mangaData } = props;
+  const { mangaId, coverId, title, contentRating, mangaData } = props;
 
   const { data, isLoading, isSuccess, isError } = useQuery<ICoverData, Error>(
     ["coverQuery", coverId],
@@ -31,13 +31,13 @@ export function MangaCard(props: IMangaCardProp) {
       {isLoading && <Loading />}
       {isSuccess && (
         <Link
-          to={`../manga/${managId}`}
+          to={`../manga/${mangaId}`}
           state={[mangaData, data?.attributes.fileName]}
         >
           <div
             className={`m-1 flex h-72 w-52 flex-col-reverse overflow-hidden rounded-lg border-2 border-secondary bg-cover bg-center bg-no-repeat shadow-inner shadow-primary duration-300 ease-in-out hover:border-primary`}
             style={{
-              backgroundImage: `url(${getProxiedImageUrl(managId, data?.attributes.fileName)})`,
+              backgroundImage: `url(${getProxiedImageUrl(mangaId, data?.attributes.fileName)})`,
             }}
           >
             <div className="flex h-2/3 w-full flex-col justify-end bg-gradient-to-t from-black text-white ">

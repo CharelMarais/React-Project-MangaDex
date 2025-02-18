@@ -15,16 +15,18 @@ export function MangaReaderBottomBar() {
     const handleNextChapter = (e: React.MouseEvent) => {
         e.preventDefault();
         const nextChapter = chapterStore.goToNextChapter();
+        const mangaId = chapterStore.currentMangaId;
         if (nextChapter) {
-            navigate(`../manga/chapter/${nextChapter.id}`);
+            navigate(`../manga/chapter/${nextChapter.id}`, { state: { mangaId } });
         }
     };
 
     const handlePrevChapter = (e: React.MouseEvent) => {
         e.preventDefault();
         const prevChapter = chapterStore.goToPreviousChapter();
+        const mangaId = chapterStore.currentMangaId;
         if (prevChapter) {
-            navigate(`../manga/chapter/${prevChapter.id}`);
+            navigate(`../manga/chapter/${prevChapter.id}`, { state: { mangaId } });
         }
     };
 
