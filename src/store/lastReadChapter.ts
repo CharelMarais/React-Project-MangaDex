@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { LastReadStore } from "../models/lastRead";
 
 export const useLastReadStore = create<LastReadStore>()(
   persist(

@@ -18,7 +18,7 @@ export function FavouriteMangaCardContainer() {
                 <MangaCard
                   key={mangaData.id}
                   mangaData={mangaData}
-                  managId={mangaData.id}
+                  mangaId={mangaData.id}
                   coverId={
                     mangaData.relationships.find(
                       ({ type }) => type === "cover_art"
