@@ -1,7 +1,7 @@
 import { IMangaData } from "../models/manga";
 
 export type IMangaCardProp = {
-  managId: string;
+  mangaId: string;
   coverId: string;
   title: string;
   contentRating: string;

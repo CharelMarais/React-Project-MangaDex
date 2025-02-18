@@ -5,7 +5,6 @@ import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";
 import { ErrorComponent } from "../components/ErrorComponent";
 import Loading from "../components/Loading";
-import { log } from "firebase-functions/logger";
 
 export function MangaCardContainer() {
   const { orderType } = useParams();
