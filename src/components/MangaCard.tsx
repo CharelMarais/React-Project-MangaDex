@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { IMangaCardProp } from "../props/coverProp";
-import { getCoverById } from "../services/apicalls";
+import { getCoverById } from "../services/apiCalls";
 import { ICoverData } from "../models/cover";
 import { Link } from "react-router-dom";
 import { ErrorComponent } from "./ErrorComponent";

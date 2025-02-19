@@ -5,11 +5,13 @@ import { IMangaChapterFeedProp } from "../props/mangaProps";
 import { useEffect, useState } from "react";
 import { processChapters } from "../services/processChapters";
 import { useCurrentChapter } from "../store/currentChapterStore";
-import { getChapterFeedById } from "../services/apicalls";
+import { getChapterFeedById } from "../services/apiCalls";
+import { useReadChaptersStore } from "../store/readChaptersStore";
 
 export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
   const { setChapterList, setCurrentChapter } = useCurrentChapter();
   const [processedChapters, setProcessedChapters] = useState<IChapterData[]>([]);
+  const { isChapterRead } = useReadChaptersStore();
 
   const { data, isSuccess } = useQuery<IChapterData[], Error>(
     [`chapterFeedQuery`, mangaId],
@@ -38,7 +40,11 @@ export function ChapterFeed({ mangaId }: IMangaChapterFeedProp) {
                 onClick={() => setCurrentChapter(chapter.id)}
                 className="block"
               >
-                <div className="flex w-60 flex-shrink-0 cursor-pointer text-neutral-400">
+                <div className={`flex w-60 flex-shrink-0 cursor-pointer ${
+                  isChapterRead(mangaId, chapter.id) 
+                    ? "text-secondary-accent" 
+                    : "text-neutral-400"
+                }`}>
                   <p className="rounded-full hover:bg-secondary/40 py-1 px-2">
                     Chapter: {chapter.attributes.chapter} {" "} 
                     Pages: {chapter.attributes.pages}

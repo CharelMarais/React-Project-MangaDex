@@ -1,5 +1,6 @@
 import "animate.css";
 import roshiImage from '../assets/img/roshi.png' 
+import { ContinueReadingButton } from "../components/ContinueReadingCurrentManga";
 
 export function LandingPage() {
   
@@ -23,6 +24,7 @@ export function LandingPage() {
         src={roshiImage}
         alt="master roshi"
       />
+      <ContinueReadingButton mangaId={""} />
     </div>
   );
 }

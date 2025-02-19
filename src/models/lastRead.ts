@@ -1,4 +1,6 @@
 export interface LastReadStore {
     lastReadChapters: Record<string, string>;
-    setLastReadChapterPerManga: (mangaId: string, chapterId: string) => void;
+    lastMangaReadId: string,
+    lastReadChapterId: string
+    setLastReadChapter: (mangaId: string, chapterId: string) => void;
 }

@@ -3,11 +3,12 @@ import { useLocation, useParams } from "react-router-dom";
 import { ErrorComponent } from "../components/ErrorComponent";
 import Loading from "../components/Loading";
 import { IChapter } from "../models/chapter";
-import { getChapterImagesById } from "../services/apicalls";
+import { getChapterImagesById } from "../services/apiCalls";
 import { MangaReaderBottomBar } from "../components/MangaReaderBottomBar";
 import { useScrollToTop } from "../services/scrollToTop";
 import { useLastReadStore } from "../store/lastReadChapter";
 import { useEffect } from "react";
+import { useReadChaptersStore } from "../store/readChaptersStore";
 
 const getProxiedImageUrl = (hash: string, chapter: string): string => {
   const imagePath = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
@@ -26,7 +27,8 @@ export function MangaReader() {
   const location = useLocation();
   const { mangaId } = location.state || {};
   
-  const { setLastReadChapterPerManga } = useLastReadStore();
+  const { setLastReadChapter } = useLastReadStore();
+  const { markChapterAsRead } = useReadChaptersStore();
 
   const { data, isLoading, isSuccess, isError } = useQuery<IChapter, Error>(
     [`coverImageQuery`, chapterId],
@@ -35,11 +37,14 @@ export function MangaReader() {
 
   useEffect(() => {
     if (isSuccess && mangaId && chapterId) {
-      setLastReadChapterPerManga(mangaId, chapterId);
+      setLastReadChapter(mangaId, chapterId);
     }
-  }, [isSuccess, mangaId, chapterId, setLastReadChapterPerManga]);
-  
+  }, [isSuccess, mangaId, chapterId, setLastReadChapter]);
 
+  useEffect(() => {
+    chapterId && mangaId && markChapterAsRead(mangaId, chapterId);
+  }, [mangaId, chapterId]);
+  
   return (
     <div className="flex h-full w-full flex-col items-center py-16 px-4">
       <MangaReaderBottomBar />
