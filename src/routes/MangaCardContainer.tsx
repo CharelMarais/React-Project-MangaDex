@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getManga, getMangaSearchResults } from "../services/apicalls";
+import { getManga, getMangaSearchResults } from "../services/apiCalls";
 import { IMangaData } from "../models/manga";
 import { MangaCard } from "../components/MangaCard";
 import { useParams } from "react-router-dom";

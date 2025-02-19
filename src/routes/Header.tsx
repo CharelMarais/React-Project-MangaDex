@@ -6,7 +6,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigationHistory } from "../services/historyHook";
 
 export function Header() {
-  const { handleBack, canGoBack } = useNavigationHistory();
+  const { handleBack } = useNavigationHistory();
   const isHomePage = useMatch("/");
 
   return (

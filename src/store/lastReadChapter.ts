@@ -6,12 +6,16 @@ export const useLastReadStore = create<LastReadStore>()(
   persist(
     (set) => ({
       lastReadChapters: {},
-      setLastReadChapterPerManga: (mangaId, chapterId) => 
+      lastMangaReadId: '',
+      lastReadChapterId: '',
+      setLastReadChapter: (mangaId, chapterId) => 
         set((state) => ({
           lastReadChapters: {
             ...state.lastReadChapters,
             [mangaId]: chapterId
-          }
+          },
+          lastReadMangaId: mangaId,
+          lastReadChapterId: chapterId
         }))
     }),
     {

@@ -3,7 +3,6 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMangaInfoProp } from "../props/mangaProps";
 import { useMangaFavouriteStore } from "../store/zustore";
 import { ContinueReadingButton } from "./ContinueReadingCurrentManga";
-import { useLastReadStore } from "../store/lastReadChapter";
 
 const getProxiedImageUrl = (mangaId: string, filename: string): string => {
   const imagePath = `https://uploads.mangadex.org/covers/${mangaId}/${filename}.512.jpg`;
@@ -20,8 +19,6 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [expandDescription, setExpandDescription] = useState(false);
   const isFavorited = useRef(false);
   const favoritedMangas = useMangaFavouriteStore();
-  const { lastReadChapters } = useLastReadStore();
-  const lastChapterId = lastReadChapters[mangaData.id];
 
   if (favoritedMangas.favouriteMangas.includes(mangaData)) {
     isFavorited.current = true;
@@ -125,11 +122,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
             {mangaData.attributes.state}
           </span>
         </p>
-        <div className={`m-2 ${lastChapterId ?? "hidden"}`}>
-          <div className={`absolute bottom-1 right-1 text-sm`}>
-            <ContinueReadingButton mangaId={mangaData.id} />
-          </div>
-        </div>
+        <ContinueReadingButton mangaId={mangaData.id} />
       </div>
     </div>
   );
